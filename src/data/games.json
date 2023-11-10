@@ -11,7 +11,7 @@
     {
         "game_id": 2,
         "players": ["user1","user2","user3","user4"],
-        "winners": ["user1","user2"],
+        "winners": ["user1","user3"],
         "losers": {
             "user2": 15,
             "user4": 1
@@ -20,7 +20,7 @@
     {
         "game_id": 3,
         "players": ["user1","user2","user3","user4"],
-        "winners": ["user1","user2"],
+        "winners": ["user1","user4"],
         "losers": {
             "user1": 15,
             "user4": 11
@@ -29,7 +29,7 @@
     {
         "game_id": 4,
         "players": ["user1","user2","user3","user4"],
-        "winners": ["user1","user2"],
+        "winners": ["user3","user2"],
         "losers": {
             "user3": 16,
             "user4": 3
