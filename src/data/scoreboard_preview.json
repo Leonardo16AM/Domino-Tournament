@@ -1,0 +1,37 @@
+[
+    {
+        "github_user": "user1",
+        "games_played": 5,
+        "games_won": 4,
+        "games_lost": 1,
+        "elo_rating": 3000
+    },
+    {
+        "github_user": "user2",
+        "games_played": 3,
+        "games_won": 2,
+        "games_lost": 1,
+        "elo_rating": 1800
+    },
+    {
+        "github_user": "user3",
+        "games_played": 3,
+        "games_won": 1,
+        "games_lost": 2,
+        "elo_rating": 1700
+    },
+    {
+        "github_user": "user4",
+        "games_played": 3,
+        "games_won": 1,
+        "games_lost": 2,
+        "elo_rating": 1600
+    },
+    {
+        "github_user": "user5",
+        "games_played": 3,
+        "games_won": 0,
+        "games_lost": 3,
+        "elo_rating": 1500
+    }
+]
