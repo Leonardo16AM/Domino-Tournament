@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Scoreboard de Competencia de Dominó</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .player-entry {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Marcador de la Competencia de Dominó</h1>
+    <div id="scoreboard">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const url = 'https://raw.githubusercontent.com/Leonardo16AM/Domino-Tournment/main/src/data/scoreboard_preview.json';
+
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    displayScoreboard(data);
+                })
+                .catch(error => {
+                    console.error('Error al cargar el scoreboard:', error);
+                });
+        });
+
+        function displayScoreboard(scoreboardData) {
+            const scoreboardElement = document.getElementById('scoreboard');
+            scoreboardData.sort((a, b) => b.elo_rating - a.elo_rating);
+
+            scoreboardElement.innerHTML = '';
+
+            scoreboardData.forEach(player => {
+                const playerElement = document.createElement('div');
+                playerElement.className = 'player-entry';
+                playerElement.innerHTML = `
+                    <h3>${player.github_user}</h3>
+                    <p>Juegos jugados: ${player.games_played}</p>
+                    <p>Juegos ganados: ${player.games_won}</p>
+                    <p>Juegos perdidos: ${player.games_lost}</p>
+                    <p>Rating ELO: ${player.elo_rating}</p>
+                    <a href="player_info.html?player=${player.github_user}">Info del jugador</a>
+                `;
+                scoreboardElement.appendChild(playerElement);
+            });
+        }
+    </script>
+</body>
+</html>
