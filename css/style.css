@@ -4,6 +4,7 @@
   --blue:#0287ec;
   --white:#ffffff;
   --orange:#ff7701;
+  --gold: rgb(251,163,1);
   --red:#ff001e;
   --darkGray:#1a2e35;
 
@@ -366,7 +367,8 @@ a:focus {
 
 .slider_section .carousel_btn-container .carousel-control-prev:hover,
 .slider_section .carousel_btn-container .carousel-control-next:hover {
-  background: var(--darkBlue);
+  background-color: var(--darkBlue);
+  transition: 0.2s;
 }
 
 .slider_section .carousel_btn-container .carousel-control-prev {
@@ -957,4 +959,53 @@ a:focus {
 .cell_lost{
   color: var(--wa);
   font-weight: bold;
+}
+
+#visualizer_section{
+  background: #2c2c2c;
+  background: var(--darkBlueGradient);
+  height: calc(100vh - 70px);
+  margin-top: 70px;
+}
+
+#domino_board{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.domino_token{
+  position: absolute;
+  /*box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 1px 1px;*/
+}
+
+.domino_slice{
+  border-radius: 1.5px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.result_text{
+  color: var(--gold);
+  font-weight: bold;
+  text-align: center;
+}
+
+#domino_board .btn-1 {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: transparent;
+  color: #ffffff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 1px solid white;
+  border-radius: 4px;
+  margin: 5px;
+}
+
+#domino_board .btn-1:hover {
+  background-color: transparent;
+  border-color: var(--accepted);
+  color: var(--accepted);
 }
