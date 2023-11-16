@@ -1009,3 +1009,21 @@ a:focus {
   border-color: var(--accepted);
   color: var(--accepted);
 }
+
+.info_section .btn-1 {
+  display: inline-block;
+  padding: 7px 10px;
+  margin-top: 6px;
+  background-color: var(--red);
+  color: #ffffff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 1px solid transparent;
+  border-radius: 0;
+}
+
+.info_section .btn-1:hover {
+  background-color: transparent;
+  border-color: var(--red);
+  color: var(--red);
+}
