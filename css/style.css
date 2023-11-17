@@ -979,6 +979,24 @@ a:focus {
   /*box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 1px 1px;*/
 }
 
+.domino_token:hover{
+  z-index: 3;
+  transform: scale(1.1) translate(-2px,-2px);
+  filter: brightness(0.9) drop-shadow(black 3px 3px 1px) sepia(50%);
+  transition: 0.2s;
+}
+
+.first_move{
+  filter: brightness(0.6) sepia(100%) hue-rotate(170deg);
+}
+
+.first_move:hover{
+  z-index: 3;
+  transform: scale(1.1) translate(-2px,-2px);
+  filter: brightness(0.5) sepia(100%) hue-rotate(170deg) drop-shadow(black 3px 3px 1px);
+  transition: 0.2s;
+}
+
 .domino_slice{
   border-radius: 1.5px;
   background-position: center;
@@ -1026,4 +1044,18 @@ a:focus {
   background-color: transparent;
   border-color: var(--red);
   color: var(--red);
+}
+
+.player-entry {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.winner {
+    color: green;
+}
+.loser {
+    color: red;
 }

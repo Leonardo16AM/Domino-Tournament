@@ -1,11 +1,13 @@
 const horizontal = 0;
 const vertical = 1;
+let firsMove=true;
 
-function drawToken2(orientation, a, b, y, x, l){
+function drawToken(orientation, a, b, y, x, l){
   let token = document.createElement("div");
   let o="v";
   if(orientation==horizontal)o="h";
-  token.className="domino_token";
+  if(firsMove)token.className="domino_token first_move";
+  else token.className="domino_token";
   token.style.left = `${x}vw`;
   token.style.top = `${y}vw`;
   let tokenDiv1 = document.createElement("div");
@@ -29,7 +31,7 @@ function drawToken2(orientation, a, b, y, x, l){
   document.getElementById("domino_board").appendChild(token);
 }
 
-function drawToken(orientation, a, b, y, x, l){
+function drawToken2(orientation, a, b, y, x, l){
   let scale=14;
   x*=scale;
   y*=scale;
@@ -184,11 +186,9 @@ function nextToPos(i, j, orientation, t){
 }
 
 let cur=[];
-let firsMove=true;
 
 function move(a, b, p){
   if(firsMove){
-    firsMove=false;
     let o=horizontal;
     if(a==b)o=vertical;
     let d=false;
@@ -208,6 +208,7 @@ function move(a, b, p){
       "j" : (boardWidth/cellSize)/2-2,
     }
     placeToken(o, a, b, cur[0].i, cur[0].j);
+    firsMove=false;
   }
   else{
     if(p==0){
