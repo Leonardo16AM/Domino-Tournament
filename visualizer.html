@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>&#x1F074; Domino Tournament | Visualizer</title>
+    <style>
+        .player-entry {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+  <!-- icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header class="header_section">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+            <a class="navbar-brand" href="index.html">
+              <img src="images/logo.png" alt="" />
+              <span>
+                VPDT&#x1F074;
+              </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav  ">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="about.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="scoreboard.html">Leaderboard</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="visualizer.html">Visualizer</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div class="custom_menu-btn ">
+                <button>
+                  <span class=" s-1">
+  
+                  </span>
+                  <span class="s-2">
+  
+                  </span>
+                  <span class="s-3">
+  
+                  </span>
+                </button>
+              </div>
+            </div>
+  
+          </nav>
+        </div>
+    </header>
+
+    <!-- visualizer section -->
+    
+    <div id="visualizer_section">
+      <div id="domino_board">
+          <button class="btn-1" id="next_move_btn">Next</button>
+          <script src="js/visualizer.js"></script>
+      </div>
+    </div>
+
+    <!-- end of visualizer section -->
+     
+  <!-- info section -->
+
+  <section class="info_section ">
+    <div class="info_container layout_padding-top">
+      <div class="container">
+        <div class="info_top">
+          <div class="info_logo">
+            <img src="images/logo.png" alt="" />
+            <span>
+              VPDT&#x1F074;
+            </span>
+          </div>
+          <div class="social_box">
+            <a href="https://github.com/UH-GIA02">
+              <i class="fa fa-github" style="font-size:48px;color:white"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="info_main">
+          <div class="row">
+            <div class="col-md-3 col-lg-2">
+              <div class="info_link-box">
+                <h5>
+                  Enlaces útiles
+                </h5>
+                <ul>
+                  <li class=" active">
+                    <a class="" href="index.html">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="">
+                    <a class="" href="about.html">About </a>
+                  </li>
+                  <li class="">
+                    <a class="" href="category.html">Leaderboard </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-3  offset-lg-3">
+              <div class="info_form ">
+                <h5>
+                  Contáctanos
+                </h5>
+                <form action="">
+                  <input type="email" placeholder="Email">
+                  <button>
+                    Enviar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-9 col-md-10 mx-auto">
+            <div class="info_contact layout_padding2">
+              <div class="row">
+                <div class="col-md-3">
+                  <a href="#" class="link-box">
+                    <div class="img-box">
+                      <img src="images/location.png" alt="">
+                    </div>
+                    <div class="detail-box">
+                      <h6>
+                        Universidad de la Habana, Cuba
+                      </h6>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-md-4">
+                  <a href="#" class="link-box">
+                    <div class="img-box">
+                      <img src="images/mail.png" alt="">
+                    </div>
+                    <div class="detail-box">
+                      <h6>
+                        gia02@gmail.com
+                      </h6>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-md-5">
+                  <a href="#" class="link-box">
+                    <div class="img-box">
+                      <img src="images/call.png" alt="">
+                    </div>
+                    <div class="detail-box">
+                      <h6>
+                        Call +53 5 551 2893
+                      </h6>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- end info section -->
+
+  <!-- footer section -->
+  <footer class="container-fluid footer_section ">
+    <div class="container">
+      <p>
+        &copy; <span id="displayDate"></span> All Rights Reserved
+      </p>
+    </div>
+  </footer>
+  <!-- end  footer section -->
+
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/custom.js"></script>
+</body>
+</html>
