@@ -246,7 +246,7 @@ function move(a, b, p){
       }
       placeToken(token.o,a,b,token.i,token.j);
       cur[1]={
-        "x" : a,
+        "x" : b,
         "d" : (a==b),
         "o" : token.o,
         "i" : token.i,
