@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Scoreboard de Competencia de Dominó</title>
+    <title>&#x1F074; Domino Tournament | Leaderboard</title>
     <style>
         .player-entry {
             margin-bottom: 10px;
@@ -19,6 +19,8 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
+  <!-- icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <header class="header_section">
@@ -27,7 +29,7 @@
             <a class="navbar-brand" href="index.html">
               <img src="images/logo.png" alt="" />
               <span>
-                BDT
+                VPDT&#x1F074;
               </span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,14 +38,17 @@
   
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav  ">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+                </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="about.html">About Us</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="about.html"> About Us</a>
+                  <a class="nav-link" href="scoreboard.html">Leaderboard</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="scoreboard.html"> Leaderboard </a>
+                  <a class="nav-link" href="visualizer.html">Visualizer</a>
                 </li>
               </ul>
             </div>
@@ -136,10 +141,8 @@
             scoreboardElement.innerHTML = s;
         }
     </script>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/custom.js"></script>
-     <!-- info section -->
+     
+  <!-- info section -->
 
   <section class="info_section ">
     <div class="info_container layout_padding-top">
@@ -148,21 +151,12 @@
           <div class="info_logo">
             <img src="images/logo.png" alt="" />
             <span>
-              BDT
+              VPDT&#x1F074;
             </span>
           </div>
           <div class="social_box">
-            <a href="#">
-              <img src="images/fb.png" alt="">
-            </a>
-            <a href="#">
-              <img src="images/twitter.png" alt="">
-            </a>
-            <a href="#">
-              <img src="images/linkedin.png" alt="">
-            </a>
-            <a href="#">
-              <img src="images/instagram.png" alt="">
+            <a href="https://github.com/UH-GIA02">
+              <i class="fa fa-github" style="font-size:48px;color:white"></i>
             </a>
           </div>
         </div>
@@ -172,7 +166,7 @@
             <div class="col-md-3 col-lg-2">
               <div class="info_link-box">
                 <h5>
-                  Useful Link
+                  Enlaces útiles
                 </h5>
                 <ul>
                   <li class=" active">
@@ -188,7 +182,7 @@
               </div>
             </div>
 
-            <div class="col-md-3  offset-lg-1">
+            <div class="col-md-3  offset-lg-3">
               <div class="info_form ">
                 <h5>
                   Contáctanos
@@ -214,7 +208,7 @@
                     </div>
                     <div class="detail-box">
                       <h6>
-                        Cuba
+                        Universidad de la Habana, Cuba
                       </h6>
                     </div>
                   </a>
@@ -226,7 +220,7 @@
                     </div>
                     <div class="detail-box">
                       <h6>
-                        xd@gmail.com
+                        gia02@gmail.com
                       </h6>
                     </div>
                   </a>
@@ -238,7 +232,7 @@
                     </div>
                     <div class="detail-box">
                       <h6>
-                        Call +53
+                        Call +53 5 551 2893
                       </h6>
                     </div>
                   </a>
@@ -263,5 +257,9 @@
     </div>
   </footer>
   <!-- end  footer section -->
+
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/custom.js"></script>
 </body>
 </html>

@@ -1,8 +1,10 @@
 :root {
   --darkBlue: #020031;
+  --darkBlueGradient: linear-gradient(90deg, rgba(2,0,49,1) 0%, rgba(1,0,31,1) 50%, rgba(1,0,22,1) 100%);
   --blue:#0287ec;
   --white:#ffffff;
   --orange:#ff7701;
+  --gold: rgb(251,163,1);
   --red:#ff001e;
   --darkGray:#1a2e35;
 
@@ -20,7 +22,7 @@
 }
 
 html{
-  background-color: var(--darkGray) !important;
+  background: var(--darkBlueGradient) !important;
 }
 
 body {
@@ -69,7 +71,7 @@ body {
 /*header section*/
 .hero_area {
   height: calc(100vh - 30px);
-  background: var(--darkBlue);
+  background: var(--darkBlueGradient);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -83,7 +85,7 @@ body {
 .sub_page .hero_area {
   height: auto;
   background: none;
-  background-color: #1a2e35;
+  background: var(--darkBlueGradient);
 }
 
 .hero_area.sub_pages {
@@ -96,7 +98,7 @@ body {
   top: 0;
   z-index: 3;
   width: 100%;
-  background: var(--darkBlue);
+  background: var(--darkBlueGradient);
 }
 
 .header_section .container-fluid {
@@ -193,8 +195,12 @@ a:focus {
   font-size: 24px;
 }
 
+.header_section{
+  z-index: 9999;
+}
+
 .custom_nav-container {
-  z-index: 99999;
+  z-index: 10;
   padding: 0;
   height: 70px;
 }
@@ -362,6 +368,7 @@ a:focus {
 .slider_section .carousel_btn-container .carousel-control-prev:hover,
 .slider_section .carousel_btn-container .carousel-control-next:hover {
   background-color: var(--darkBlue);
+  transition: 0.2s;
 }
 
 .slider_section .carousel_btn-container .carousel-control-prev {
@@ -519,7 +526,10 @@ a:focus {
 }
 
 .about_section {
-  text-align: center;
+  text-align: justify;
+  width: 80%;
+  min-height: 70vh;
+  margin: auto;
 }
 
 .about_section .img-box img {
@@ -666,7 +676,7 @@ a:focus {
 /* info section */
 .info_section {
   position: relative;
-  background-color: #1a2e35;
+  background: var(--darkBlueGradient);
   color: #ffffff;
 }
 
@@ -910,7 +920,7 @@ a:focus {
 /*Leaderboard section*/
 
 #leaderboard_section{
-  background: var(--darkGray);
+  background: var(--darkBlueGradient);
   color: var(--white);
   margin-top: 70px;
   padding: 5%;
@@ -949,4 +959,71 @@ a:focus {
 .cell_lost{
   color: var(--wa);
   font-weight: bold;
+}
+
+#visualizer_section{
+  background: #2c2c2c;
+  background: var(--darkBlueGradient);
+  height: calc(100vh - 70px);
+  margin-top: 70px;
+}
+
+#domino_board{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.domino_token{
+  position: absolute;
+  /*box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 1px 1px;*/
+}
+
+.domino_slice{
+  border-radius: 1.5px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.result_text{
+  color: var(--gold);
+  font-weight: bold;
+  text-align: center;
+}
+
+#domino_board .btn-1 {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: transparent;
+  color: #ffffff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 1px solid white;
+  border-radius: 4px;
+  margin: 5px;
+}
+
+#domino_board .btn-1:hover {
+  background-color: transparent;
+  border-color: var(--accepted);
+  color: var(--accepted);
+}
+
+.info_section .btn-1 {
+  display: inline-block;
+  padding: 7px 10px;
+  margin-top: 6px;
+  background-color: var(--red);
+  color: #ffffff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 1px solid transparent;
+  border-radius: 0;
+}
+
+.info_section .btn-1:hover {
+  background-color: transparent;
+  border-color: var(--red);
+  color: var(--red);
 }

@@ -17,8 +17,10 @@
   }
 
   .header_section{
-    position: initial;
-    background: var(--darkGray);
+    overflow-x: hidden;
+    position:fixed;
+    top: 0;
+    background: var(--darkBlueGradient);
   }
 
   .header_section .user_option {
@@ -53,10 +55,9 @@
 
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767px) { 
   .hero_area {
-    background: none;
-    background-color: #1a2e35;
+    background: var(--darkBlueGradient);
     /* background: linear-gradient(to bottom, #1a2e35 40%, #1cbbb4 40%); */
   }
 
@@ -81,7 +82,7 @@
   .slider_section .img-container .img-box {
 
     padding: 45px 0;
-    background-color: #020031;
+    background:var(--darkBlueGradient);
   }
 
   .experience_section .img-box {

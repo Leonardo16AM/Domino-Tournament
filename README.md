@@ -1,5 +1,8 @@
 # Domino Tournament
 
+<p align="center">
+  <img src="https://github.com/UH-GIA02/Domino-Tournament/blob/main/images/background%20sin%20fondo.png" width="40%" height="40%">
+</p>
 Welcome to the GitHub Domino Tournament! This is a unique project where participants from the GitHub community can submit their virtual domino players and compete in an automated domino tournament. The competition leverages GitHub's infrastructure, and the results are showcased on GitHub Pages.
 
 ## Getting Started
