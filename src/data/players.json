@@ -39,5 +39,10 @@
         "github_user": "LEGION",
         "games_played": [],
         "repo": "Test"
+    },
+    {
+        "github_user": null,
+        "games_played": [],
+        "repo": null
     }
 ]
