@@ -2,6 +2,13 @@ const horizontal = 0;
 const vertical = 1;
 let firsMove=true;
 
+const cellSize = 1;
+const gap = 0.04;
+const boardWidth = 90;
+const boardHeight = 40;
+
+let cur=[];
+
 function drawToken(orientation, a, b, y, x, l){
   let token = document.createElement("div");
   let o="v";
@@ -63,12 +70,8 @@ function drawToken2(orientation, a, b, y, x, l){
   document.getElementById("domino_board").appendChild(token);
 }
 
-const cellSize = 1;
-const gap = 0.04;
-const boardWidth = 100;
-const boardHeight = 40;
-
 function placeToken(orientation, a, b, i, j){
+  j-=6;
   drawToken(orientation, a, b, i*(gap+cellSize), j*(gap+cellSize), cellSize*2);
 }
 
@@ -82,12 +85,12 @@ function nextToPos(i, j, orientation, t){
     }
     else if(t == 1){
       ni=i-4;
-      nj=j+1;
+      nj=j+2;
       no=vertical;
     }
     else if(t == 2){
-      ni=i-4;
-      nj=j+2;
+      ni=i-1;
+      nj=j+4;
       no=vertical;
     }
     else if(t == 3){
@@ -102,27 +105,17 @@ function nextToPos(i, j, orientation, t){
     }
     else if(t == 5){
       ni=i+2;
-      nj=j+1;
-      no=vertical;
-    }
-    else if(t == 6){
-      ni=i+2;
       nj=j;
       no=vertical;
     }
-    else if(t == 7){
+    else if(t == 6){
       ni=i;
       nj=j-4;
       no=horizontal;
     }
-    else if(t == 8){
+    else if(t == 7){
       ni=i-1;
       nj=j-2;
-      no=vertical;
-    }
-    else if(t == 9){
-      ni=i-1;
-      nj=j+4;
       no=vertical;
     }
   }
@@ -133,49 +126,39 @@ function nextToPos(i, j, orientation, t){
       no=vertical;
     }
     else if(t == 1){
-      ni=i;
+      ni=i+1;
       nj=j+2;
       no=horizontal;
     }
     else if(t == 2){
-      ni=i+1;
-      nj=j+2;
+      ni=i+4;
+      nj=j;
       no=horizontal;
     }
     else if(t == 3){
-      ni=i+2;
-      nj=j+2;
-      no=horizontal;
-    }
-    else if(t == 4){
       ni=i+4;
       nj=j;
       no=vertical;
     }
-    else if(t == 5){
-      ni=i+2;
-      nj=j-4;
+    else if(t == 4){
+      ni=i+4;
+      nj=j-2;
       no=horizontal;
     }
-    else if(t == 6){
+    else if(t == 5){
       ni=i+1;
       nj=j-4;
       no=horizontal;
     }
-    else if(t == 7){
-      ni=i;
-      nj=j-4;
-      no=horizontal;
-    }
-    else if(t == 8){
+    else if(t == 6){
       ni=i-2;
-      nj=j-1;
+      nj=j-2;
       no=horizontal;
     }
-    else if(t == 9){
-      ni=i+4;
-      nj=j-1;
-      no=vertical;
+    else if(t == 7){
+      ni=i-2;
+      nj=j;
+      no=horizontal;
     }
   }
   return {
@@ -184,8 +167,6 @@ function nextToPos(i, j, orientation, t){
     "o" : no,
   }
 }
-
-let cur=[];
 
 function move(a, b, p){
   if(firsMove){
@@ -199,6 +180,7 @@ function move(a, b, p){
       "o" : o,
       "i" : (boardHeight/cellSize)/2-2,
       "j" : (boardWidth/cellSize)/2-2,
+      "dir" : 3
     }
     cur[1]={
       "x" : b,
@@ -206,68 +188,101 @@ function move(a, b, p){
       "o" : o,
       "i" : (boardHeight/cellSize)/2-2,
       "j" : (boardWidth/cellSize)/2-2,
+      "dir" : 1
     }
     placeToken(o, a, b, cur[0].i, cur[0].j);
     firsMove=false;
   }
   else{
-    if(p==0){
-      if(a==cur[0].x){
-        a^=b;
-        b^=a;
-        a^=b;
+    let prev=cur[p];
+    let token;
+    let x,dir,t,xd;
+    if(prev.dir==0){
+      if(prev.j<50){
+        t=7;
+        dir=1;
       }
-      let token;
-      if(a==b)token=nextToPos(cur[0].i,cur[0].j,cur[0].o,8);
-      else {
-        if(cur[0].d)token=nextToPos(cur[0].i,cur[0].j,cur[0].o,6);
-        else token=nextToPos(cur[0].i,cur[0].j,cur[0].o,7);
+      else{
+        t=6;
+        dir=3;
       }
-      placeToken(token.o,a,b,token.i,token.j);
-      cur[0]={
-        "x" : a,
-        "d" : (a==b),
-        "o" : token.o,
-        "i" : token.i,
-        "j" : token.j,
+    }
+    else if(prev.dir==1){
+      if(prev.j>=69){
+        if(p==0){
+          t=4;
+          dir=2;
+        }
+        else{
+          t=1;
+          dir=0;
+        }
+      }
+      else{
+        if(a==b)t=2;
+        else if(prev.o==vertical)t=1;
+        else t=3;
+        dir=1;
+      }
+    }
+    else if(prev.dir==2){
+      if(prev.j<50){
+        t=2;
+        dir=1;
+      }
+      else{
+        t=4;
+        dir=3;
       }
     }
     else{
-      if(b==cur[1].x){
-        a^=b;
-        b^=a;
-        a^=b;
+      if(prev.j<=13){
+        if(p==0){
+          t=5;
+          dir=2;
+        }
+        else{
+          t=0;
+          dir=0;
+        }
       }
-      let token;
-      if(a==b)token=nextToPos(cur[1].i,cur[1].j,cur[1].o,9);
-      else {
-        if(cur[1].d)token=nextToPos(cur[1].i,cur[1].j,cur[1].o,2);
-        else token=nextToPos(cur[1].i,cur[1].j,cur[1].o,3);
+      else{
+        if(a==b)t=7;
+        else if(prev.o==vertical)t=5;
+        else t=6;
+        dir=3;
       }
-      placeToken(token.o,a,b,token.i,token.j);
-      cur[1]={
-        "x" : b,
-        "d" : (a==b),
-        "o" : token.o,
-        "i" : token.i,
-        "j" : token.j,
-      }
+    }
+
+    if((dir==0 && a==prev.x) || (dir==1 && b==prev.x) || (dir==2 && b==prev.x)|| (dir==3 && a==prev.x)){
+      a^=b;
+      b^=a;
+      a^=b;
+    }
+    if(dir==0 || dir==3)x=a;
+    else x=b;
+
+    token=nextToPos(prev.i,prev.j,prev.o,t);
+    placeToken(token.o,a,b,token.i,token.j);
+    cur[p]={
+      "x" : x,
+      "d" : (a==b),
+      "o" : token.o,
+      "i" : token.i,
+      "j" : token.j,
+      "dir" : dir
     }
   }
 }
-/*move(4,2,0);
-move(4,3,0);
-move(3,3,0);
-move(2,5,1);
-move(5,5,1);
-move(5,6,1);
-move(3,6,0);*/
 
-function simulateGame(){
+let onFinal=0;
+function simulateGame(limit){
   fetch('./game.json')
   .then(response => response.json())
   .then(data => {
     for(const e of data["0"]){
+      if(limit==0 && e[0]!="WIN" && e[0]!="FINAL")break;
+      limit--;
       if(e[0]=="NEW_GAME"){
         document.getElementById("domino_board").innerHTML="";
         firsMove=true;
@@ -275,9 +290,9 @@ function simulateGame(){
       else if(e[0]=="MOVE"){
         let a=e[2][0],b=e[2][1],p=e[3];
         move(a,b,p);
-        console.log(a,b,p);
       }
       else if(e[0]=="WIN"){
+        onFinal=1;
         let result = document.createElement("h1");
         result.className=("result_text");
         result.innerHTML=`Player ${e[1]} wins!`;
@@ -290,4 +305,22 @@ function simulateGame(){
   });
 }
 
-simulateGame();
+let currentMove=1;
+
+window.onload = function(e){ 
+  let nextBtn=document.getElementById("next_move_btn");
+  nextBtn.onclick = function(){
+    if(!onFinal)currentMove++;
+    simulateGame(currentMove);
+    document.getElementById("move_count").innerHTML=`Move #${currentMove-1}`;
+  };
+
+  let prevBtn=document.getElementById("prev_move_btn");
+  prevBtn.onclick = function(){
+    currentMove--;
+    onFinal=0;
+    if(currentMove==0)currentMove=1;
+    simulateGame(currentMove);
+    document.getElementById("move_count").innerHTML=`Move #${currentMove-1}`;
+  };
+}

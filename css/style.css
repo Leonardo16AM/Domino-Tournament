@@ -966,11 +966,12 @@ a:focus {
   background: var(--darkBlueGradient);
   height: calc(100vh - 70px);
   margin-top: 70px;
+  display: flex;
 }
 
 #domino_board{
   position: relative;
-  width: 100%;
+  width: 80%;
   height: 100%;
 }
 
@@ -1005,27 +1006,9 @@ a:focus {
 }
 
 .result_text{
-  color: var(--gold);
+  color: var(--blue);
   font-weight: bold;
   text-align: center;
-}
-
-#domino_board .btn-1 {
-  display: inline-block;
-  padding: 5px 10px;
-  background-color: transparent;
-  color: #ffffff;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  border: 1px solid white;
-  border-radius: 4px;
-  margin: 5px;
-}
-
-#domino_board .btn-1:hover {
-  background-color: transparent;
-  border-color: var(--accepted);
-  color: var(--accepted);
 }
 
 .info_section .btn-1 {
@@ -1058,4 +1041,38 @@ a:focus {
 }
 .loser {
     color: red;
+}
+
+#gamelog{
+  width: 20%;
+  height: 100%;
+  color: white;
+  background: #02020267;
+  padding: 10px;
+  display: flex;
+}
+
+#gamelog p{
+  margin: auto;
+  margin-top: 7px;
+}
+
+#gamelog .btn-1 {
+  margin: auto;
+  display: inline-block;
+  padding: 2px 7px;
+  background-color: transparent;
+  color: #ffffff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 1px solid white;
+  border-radius: 4px;
+  margin: 5px;
+  height: fit-content;
+}
+
+#gamelog .btn-1:hover {
+  background-color: transparent;
+  border-color: var(--accepted);
+  color: var(--accepted);
 }
