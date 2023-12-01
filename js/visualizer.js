@@ -283,8 +283,9 @@ function move(a, b, p){
 }
 
 function simulateGame(limit){
+  limit+=4;
   for(const e of gameData["0"]){
-    if(limit==0 && e[0]!="WIN" && e[0]!="FINAL")break;
+    if(limit==0 && e[0]!="WIN" && e[0]!="OVER")break;
     limit--;
     if(e[0]=="NEW_GAME"){
       document.getElementById("domino_board").innerHTML="";
@@ -304,7 +305,7 @@ function simulateGame(limit){
 }
 
 function initGame(){
-  gameLen=gameData[0].length-3;
+  gameLen=gameData[0].length-7;
   let gameTableBody=document.getElementById("game_table_body");
   for(const e of gameData["0"]){
     if(e[0]=="MOVE"){
