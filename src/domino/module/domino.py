@@ -35,6 +35,10 @@ class Event(Enum):
     # params: (player)
     TIMEOUT = 7
 
+     # event to log out the players hands
+     # params: (pieces)  pieces= list of pieces of the ith player
+    HAND = 8
+
 class InvalidMove(Exception):
     def __init__(self, message, move, player):
         super().__init__(message)
@@ -99,6 +103,12 @@ class Domino:
         self.current_player = 0
 
         self.log(Event.NEW_GAME)
+
+        for i in range(0,4):        # todo ajustar el limite superior del range a la cantidad de players en el juego
+            pieces=[i]
+            for piece in self.players[i].remaining:
+                pieces.append(piece)
+            self.log(Event.HAND,pieces) 
 
     def check_valid(self, action):
         # TODO: For intensive calculation disable check_valid.
