@@ -11,5 +11,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9' 
+
+    - name: Instalar PyGithub
+      run: pip install PyGithub
+
     - name: Ejecutar Script Python
       run: python new_repo.py ${{ github.event.client_payload.pr_user }} ${{ github.event.client_payload.pr_link }}
