@@ -1050,6 +1050,15 @@ a:focus {
   color: white;
   background: #02020267;
   padding: 10px;
+  font-size: 14px;
+  overflow-y: scroll;
+}
+
+#game_table_body td, th{
+  line-height: 5px;
+}
+
+#game_controlers{
   display: flex;
 }
 
