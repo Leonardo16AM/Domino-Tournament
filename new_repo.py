@@ -7,6 +7,7 @@ import subprocess
 from termcolor import colored
 from collections import defaultdict
 import ast
+import requests
 
 
 REPO_NAME = "UH-GIA02/Domino-Tournament"
@@ -73,13 +74,30 @@ def run_game(p1, p2, tipo):           # la linea de abajo puede dar bateo con el
         print(f"Invalid output: {completed_process.stdout}")
         return {}
     
+
+def get_repo_from_pull_request(pull_request_url):
+    # Obtener la API URL del pull request
+    api_url = pull_request_url.replace("https://github.com/", "https://api.github.com/repos/")
+    api_url = api_url.replace("/pull/", "/pulls/")
+
+    # Hacer la solicitud a la API de GitHub
+    response = requests.get(api_url)
+    if response.status_code == 200:
+        data = response.json()
+        # Obtener el URL del repositorio
+        repo_url = data['head']['repo']['html_url']
+        return repo_url
+    else:
+        return "Error: No se pudo obtener información del pull request."
+
+    
 def main():
     if len(sys.argv) != 3:
         print("Use: new_repo.py <user> <url_pr>")
         sys.exit(1)
 
     user_name = sys.argv[1]
-    repo_url = sys.argv[2]
+    repo_url =  get_repo_from_pull_request(sys.argv[2])
     p1=5000
     p2=5001
     docker_build1 = f"docker build -t {user_name.lower()+'_a'} '{repo_url}.git'"
