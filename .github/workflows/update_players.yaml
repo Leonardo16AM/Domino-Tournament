@@ -17,7 +17,7 @@ jobs:
         python-version: '3.9' 
 
     - name: Instalar requerimientos
-      run: pip install PyGithub ,termcolor,numpy
+      run: pip install PyGithub termcolor numpy
 
     - name: Ejecutar Script Python
       env:
