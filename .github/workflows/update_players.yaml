@@ -16,10 +16,8 @@ jobs:
       with:
         python-version: '3.9' 
 
-    - name: Instalar PyGithub
-      run: pip install PyGithub    
-    - name: Instalar Termcolor
-      run: pip install termcolor
+    - name: Instalar requerimientos
+      run: pip install PyGithub ,termcolor,numpy
 
     - name: Ejecutar Script Python
       env:
