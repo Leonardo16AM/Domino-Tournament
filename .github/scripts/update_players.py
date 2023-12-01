@@ -8,6 +8,7 @@ FILE_PATH = "src/data/players.json"
 g = Github(os.environ['GITHUB_TOKEN'])
 repo = g.get_repo(REPO_NAME)
 
+
 def update_players_file(pr):
     # Cargar el archivo JSON de jugadores
     domino_repo = g.get_repo("UH-GIA02/Domino-Tournament")
