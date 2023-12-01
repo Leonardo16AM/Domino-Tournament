@@ -3,11 +3,19 @@ import json
 import os
 import sys
 
+import subprocess
+from termcolor import colored
+from collections import defaultdict
+import ast
+
+
 REPO_NAME = "UH-GIA02/Domino-Tournament"
 FILE_PATH = "src/data/players.json"
-
 g = Github(os.environ['SUPER_TOKEN'])
 domino_repo = g.get_repo(REPO_NAME)
+
+
+
 
 def update_players_file(user_name, repo_url):
     contents = domino_repo.get_contents(FILE_PATH)
@@ -30,6 +38,41 @@ def update_players_file(user_name, repo_url):
         contents.sha
     )
 
+def start_new_player(container_id,port,image_name):
+    print(f"Corriendo el contenedor {container_id}...")
+    run_player = f"docker run -d --rm -p 127.0.0.1:{port}:8000 --name {container_id} {image_name}"
+    subprocess.run(run_player, shell=True)
+    print(colored(f'Container ID: {container_id}', 'cyan'))
+    print(colored(f'Puerto asignado: {port}', 'green'))
+
+
+def parse_output(output_str):
+    try:
+        parsed_output = ast.literal_eval(output_str)
+        if not isinstance(parsed_output, dict):
+            print("La salida no es un diccionario")
+            return None
+        return parsed_output
+    except (ValueError, SyntaxError):
+        print("La salida no se pudo parsear")
+        return None
+
+
+def run_game(p1, p2, tipo):           # la linea de abajo puede dar bateo con el path, xq es relativo OJO xd
+    cmd = f"python3 src/domino/domino.py play -p0 Remote http://127.0.0.1:{p1} -p1 {tipo} -p2 Remote http://127.0.0.1:{p2} -p3 {tipo} -v"
+  
+    completed_process = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+
+    if completed_process.returncode != 0:
+        print(f"Error running command: {completed_process.stderr}")
+        return {}
+
+    try:
+        return parse_output(completed_process.stdout)
+    except json.JSONDecodeError:
+        print(f"Invalid output: {completed_process.stdout}")
+        return {}
+    
 def main():
     if len(sys.argv) != 3:
         print("Use: new_repo.py <user> <url_pr>")
@@ -37,6 +80,22 @@ def main():
 
     user_name = sys.argv[1]
     repo_url = sys.argv[2]
+    p1=5000
+    p2=5001
+    docker_build1 = f"docker build -t {user_name+'_1'} '{repo_url}.git'"
+    docker_build2 = f"docker build -t {user_name+'_2'} '{repo_url}.git'"
+    build_out1 = subprocess.run(docker_build1, shell=True)
+    build_out2 = subprocess.run(docker_build2, shell=True)
+    if build_out1.returncode == 0 and build_out2.returncode == 0:
+        start_new_player(user_name+'_1',p1,user_name+'_1')
+        start_new_player(user_name+'_2',p2,user_name+'_2')
+
+    tipos=['Agachao']
+    for tipo in tipos:
+        print(f"Playing games between {user_name} and {tipo}")
+        result = run_game(p1,p2,tipo)
+        print(result)
+        
 
     update_players_file(user_name, repo_url)
 
