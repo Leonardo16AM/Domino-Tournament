@@ -44,5 +44,10 @@
         "github_user": null,
         "games_played": [],
         "repo": null
+    },
+    {
+        "github_user": "nombre-de-usuario",
+        "games_played": [],
+        "repo": "https://github.com/UH-GIA02/Example-Domino-Remote-Player/pull/1"
     }
 ]
