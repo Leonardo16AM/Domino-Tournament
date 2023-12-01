@@ -306,23 +306,33 @@ function simulateGame(limit){
 
 function initGame(){
   gameLen=gameData[0].length-7;
+  let c=0,i=0,row=``;
   let gameTableBody=document.getElementById("game_table_body");
   for(const e of gameData["0"]){
-    if(e[0]=="MOVE"){
-      let a=e[2][0],b=e[2][1],p=e[3];
-      gameTableBody.innerHTML+=`<tr>
-        <th scope="row">a</th>
-        <td>asd</td>
-        <td>asd</td>
-        <td>asd</td>
-        <td>asd</td>
-      </tr>`;
+    if(e[0]=="MOVE" || e[0]=="PASS"){
+      if(c==0)row=`<tr><th scope="row">${++i}</th>`;
+      c++;
+      if(e[0]=="MOVE"){
+        let a=e[2][0],b=e[2][1],p=e[3];
+        row+=`<td>${a},${b},${p}</td>`;
+      }
+      else{
+        row+=`<td>----</td>`;
+      }
+      if(c==4){
+        gameTableBody.innerHTML+=row+`</tr>`;
+        c=0;
+      }
     }
     else if(e[0]=="WIN"){
       
     }
   }
+  if(c!=0){
+    gameTableBody.innerHTML+=row+`</tr>`;
+  }
 }
+
 
 window.onload = async () =>{ 
   gameData = await gameDataPromise;
