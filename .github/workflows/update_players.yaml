@@ -20,4 +20,6 @@ jobs:
       run: pip install PyGithub
 
     - name: Ejecutar Script Python
+      env:
+        SUPER_TOKEN: ${{ secrets.SUPER_TOKEN }}
       run: python new_repo.py ${{ github.event.client_payload.pr_user }} ${{ github.event.client_payload.pr_link }}
