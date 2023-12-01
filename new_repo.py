@@ -82,19 +82,21 @@ def main():
     repo_url = sys.argv[2]
     p1=5000
     p2=5001
-    docker_build1 = f"docker build -t {user_name+'_1'} '{repo_url}.git'"
-    docker_build2 = f"docker build -t {user_name+'_2'} '{repo_url}.git'"
+    docker_build1 = f"docker build -t {user_name.lower()+'_a'} '{repo_url}.git'"
+    docker_build2 = f"docker build -t {user_name.lower()+'_b'} '{repo_url}.git'"
     build_out1 = subprocess.run(docker_build1, shell=True)
     build_out2 = subprocess.run(docker_build2, shell=True)
-    if build_out1.returncode == 0 and build_out2.returncode == 0:
-        start_new_player(user_name+'_1',p1,user_name+'_1')
-        start_new_player(user_name+'_2',p2,user_name+'_2')
 
-    tipos=['Agachao']
-    for tipo in tipos:
-        print(f"Playing games between {user_name} and {tipo}")
-        result = run_game(p1,p2,tipo)
-        print(result)
+    if build_out1.returncode == 0 and build_out2.returncode == 0:
+
+        start_new_player(user_name.lower()+'_a',p1,user_name.lower()+'_a')
+        start_new_player(user_name.lower()+'_b',p2,user_name.lower()+'_b')
+
+        tipos=['Agachao']
+        for tipo in tipos:
+            print(f"Playing games between {user_name} and {tipo}")
+            result = run_game(p1,p2,tipo)
+            print(result)
         
 
     update_players_file(user_name, repo_url)
