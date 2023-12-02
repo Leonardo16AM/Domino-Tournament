@@ -302,6 +302,14 @@ function simulateGame(limit){
       document.getElementById("domino_board").appendChild(result);
     }
   }
+  document.getElementById("move_count").innerHTML=`Move #${currentMove-1}`;
+  let moveTexts=document.getElementsByClassName("move_text");
+  let i=1;
+  for(e of moveTexts){
+    if(i<=currentMove-1)e.className="move_text player_move_text";
+    else e.className="move_text";
+    i++;
+  }
 }
 
 function initGame(){
@@ -314,10 +322,12 @@ function initGame(){
       c++;
       if(e[0]=="MOVE"){
         let a=e[2][0],b=e[2][1],p=e[3];
-        row+=`<td>${a},${b},${p}</td>`;
+        let pc=`▼`;
+        if(p)pc=`▲`;
+        row+=`<td class="move_text">[${a} | ${b}]${pc}</td>`;
       }
       else{
-        row+=`<td>----</td>`;
+        row+=`<td class="move_text">---------</td>`;
       }
       if(c==4){
         gameTableBody.innerHTML+=row+`</tr>`;
@@ -331,6 +341,17 @@ function initGame(){
   if(c!=0){
     gameTableBody.innerHTML+=row+`</tr>`;
   }
+
+  let moveTexts=document.getElementsByClassName("move_text");
+  i=1;
+  for(e of moveTexts){
+    i++;
+    const a=i;
+    e.onclick = function(){
+      currentMove=a;
+      simulateGame(currentMove);
+    };
+  }
 }
 
 
@@ -342,7 +363,6 @@ window.onload = async () =>{
   nextBtn.onclick = function(){
     if(currentMove<=gameLen)currentMove++;
     simulateGame(currentMove);
-    document.getElementById("move_count").innerHTML=`Move #${currentMove-1}`;
   };
 
   let prevBtn=document.getElementById("prev_move_btn");
@@ -350,20 +370,29 @@ window.onload = async () =>{
     currentMove--;
     if(currentMove==0)currentMove=1;
     simulateGame(currentMove);
-    document.getElementById("move_count").innerHTML=`Move #${currentMove-1}`;
   };
 
   let fullNextBtn=document.getElementById("full_next_move_btn");
   fullNextBtn.onclick = function(){
     currentMove=gameLen+1;
     simulateGame(currentMove);
-    document.getElementById("move_count").innerHTML=`Move #${currentMove-1}`;
   };
 
   let fullPrevBtn=document.getElementById("full_prev_move_btn");
   fullPrevBtn.onclick = function(){
     currentMove=1;
     simulateGame(currentMove);
-    document.getElementById("move_count").innerHTML=`Move #${currentMove-1}`;
   };
 }
+
+document.addEventListener("keypress", function(e) {
+  if (e.key=="a" || e.key=="A") {
+    currentMove--;
+    if(currentMove==0)currentMove=1;
+    simulateGame(currentMove);
+  }
+  if (e.key=="d" || e.key=="D") {
+    if(currentMove<=gameLen)currentMove++;
+    simulateGame(currentMove);
+  }
+});
