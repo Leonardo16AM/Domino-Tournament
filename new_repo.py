@@ -1,4 +1,3 @@
-from github import Github
 import json
 import os
 import sys
@@ -10,18 +9,15 @@ import ast
 import requests
 
 
-REPO_NAME = "UH-GIA02/Domino-Tournament"
 FILE_PATH = "src/data/players.json"
-g = Github(os.environ['SUPER_TOKEN'])
-domino_repo = g.get_repo(REPO_NAME)
-
-
 
 
 def update_players_file(user_name, repo_url):
-    contents = domino_repo.get_contents(FILE_PATH)
-    players = json.loads(contents.decoded_content)
+    # Leer el archivo JSON existente
+    with open(FILE_PATH, 'r') as file:
+        players = json.load(file)
 
+    # Actualizar o añadir datos del jugador
     player_found = False
     for player in players:
         if player['github_user'] == user_name:
@@ -32,12 +28,11 @@ def update_players_file(user_name, repo_url):
     if not player_found:
         players.append({"github_user": user_name, "games_played": [], "repo": repo_url})
 
-    domino_repo.update_file(
-        contents.path,
-        "Actualización de jugador por PR",
-        json.dumps(players, indent=4),
-        contents.sha
-    )
+    # Escribir los cambios en el archivo JSON
+    with open(FILE_PATH, 'w') as file:
+        json.dump(players, file, indent=4)
+    print("Players.json updated")
+
 
 def start_new_player(container_id,port,image_name):
     print(f"Corriendo el contenedor {container_id}...")

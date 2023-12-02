@@ -1,0 +1,25 @@
+name: Update JSON on Pull Request and run games
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  update-json-on-pr:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+
+    - name: Instalar requerimientos
+      run: pip install PyGithub termcolor numpy
+
+    - name: Ejecutar Script Python
+      env:
+        SUPER_TOKEN: ${{ secrets.SUPER_TOKEN }}
+      run: python new_repo.py ${{ github.event.pull_request.user.login }} ${{ github.event.pull_request.html_url }}
