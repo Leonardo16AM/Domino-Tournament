@@ -9,15 +9,16 @@ import ast
 import requests
 
 
-FILE_PATH = "src/data/players.json"
 
 
 def update_players_file(user_name, repo_url):
-    # Leer el archivo JSON existente
+    ''' Actualiza el archivo players.json , añade al usuario y su repo,
+      en caso de ya existir actualiza el repo'''
+
+    FILE_PATH = "src/data/players.json"
     with open(FILE_PATH, 'r') as file:
         players = json.load(file)
 
-    # Actualizar o añadir datos del jugador
     player_found = False
     for player in players:
         if player['github_user'] == user_name:
@@ -28,13 +29,13 @@ def update_players_file(user_name, repo_url):
     if not player_found:
         players.append({"github_user": user_name, "games_played": [], "repo": repo_url})
 
-    # Escribir los cambios en el archivo JSON
     with open(FILE_PATH, 'w') as file:
         json.dump(players, file, indent=4)
     print("Players.json updated")
 
 
 def start_new_player(container_id,port,image_name):
+    ''' Corre el contenedor de docker en un puerto dado '''
     print(f"Corriendo el contenedor {container_id}...")
     run_player = f"docker run -d --rm -p 127.0.0.1:{port}:8000 --name {container_id} {image_name}"
     subprocess.run(run_player, shell=True)
@@ -54,7 +55,9 @@ def parse_output(output_str):
         return None
 
 
-def run_game(p1, p2, tipo):           # la linea de abajo puede dar bateo con el path, xq es relativo OJO xd
+def run_game(p1, p2, tipo):
+    '''Corre un juego entre los dos jugadores que estan en los puertos p1 y p2 contra dos jugadores tipo'''
+
     cmd = f"python3 src/domino/domino.py play -p0 Remote http://127.0.0.1:{p1} -p1 {tipo} -p2 Remote http://127.0.0.1:{p2} -p3 {tipo} -v"
   
     completed_process = subprocess.run(cmd, shell=True, capture_output=True, text=True)
@@ -71,7 +74,8 @@ def run_game(p1, p2, tipo):           # la linea de abajo puede dar bateo con el
     
 
 def get_repo_from_pull_request(pull_request_url):
-    # Obtener la API URL del pull request
+    ''' Obtiene el link del repo a partir de un link de un PR '''
+    
     api_url = pull_request_url.replace("https://github.com/", "https://api.github.com/repos/")
     api_url = api_url.replace("/pull/", "/pulls/")
 
