@@ -7,6 +7,7 @@
   --gold: rgb(251,163,1);
   --red:#ff001e;
   --darkGray:#1a2e35;
+  --darkGrey:#1a2e35;
 
   /*CF*/
   --accepted:rgb(0,170,25);
@@ -1049,6 +1050,16 @@ a:focus {
   color: white;
   background: #02020267;
   padding: 10px;
+  font-size: 14px;
+  overflow-y: scroll;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#game_table_body td, th{
+  line-height: 5px;
+}
+
+#game_controlers{
   display: flex;
 }
 
@@ -1075,4 +1086,20 @@ a:focus {
   background-color: transparent;
   border-color: var(--accepted);
   color: var(--accepted);
+}
+
+.move_text{
+  cursor: pointer;
+}
+
+.move_text:hover{
+  background: rgb(40,40,40);
+}
+
+.player_move_text{
+  background: rgb(15,15,15);
+}
+
+.player_move_text:hover{
+  background: rgb(40,40,40);
 }

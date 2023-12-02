@@ -1,6 +1,6 @@
 const horizontal = 0;
 const vertical = 1;
-let firsMove=true;
+let firstMove=true;
 
 const cellSize = 1;
 const gap = 0.04;
@@ -9,11 +9,18 @@ const boardHeight = 40;
 
 let cur=[];
 
+let gameLen=0;
+let currentMove=1;
+
+const gameDataPromise = fetch("./game.json").then(r=>r.json()).then(data => {
+  return data;
+});
+
 function drawToken(orientation, a, b, y, x, l){
   let token = document.createElement("div");
   let o="v";
   if(orientation==horizontal)o="h";
-  if(firsMove)token.className="domino_token first_move";
+  if(firstMove)token.className="domino_token first_move";
   else token.className="domino_token";
   token.style.left = `${x}vw`;
   token.style.top = `${y}vw`;
@@ -169,7 +176,7 @@ function nextToPos(i, j, orientation, t){
 }
 
 function move(a, b, p){
-  if(firsMove){
+  if(firstMove){
     let o=horizontal;
     if(a==b)o=vertical;
     let d=false;
@@ -191,7 +198,7 @@ function move(a, b, p){
       "dir" : 1
     }
     placeToken(o, a, b, cur[0].i, cur[0].j);
-    firsMove=false;
+    firstMove=false;
   }
   else{
     let prev=cur[p];
@@ -275,52 +282,117 @@ function move(a, b, p){
   }
 }
 
-let onFinal=0;
 function simulateGame(limit){
-  fetch('./game.json')
-  .then(response => response.json())
-  .then(data => {
-    for(const e of data["0"]){
-      if(limit==0 && e[0]!="WIN" && e[0]!="FINAL")break;
-      limit--;
-      if(e[0]=="NEW_GAME"){
-        document.getElementById("domino_board").innerHTML="";
-        firsMove=true;
-      }
-      else if(e[0]=="MOVE"){
-        let a=e[2][0],b=e[2][1],p=e[3];
-        move(a,b,p);
-      }
-      else if(e[0]=="WIN"){
-        onFinal=1;
-        let result = document.createElement("h1");
-        result.className=("result_text");
-        result.innerHTML=`Player ${e[1]} wins!`;
-        document.getElementById("domino_board").appendChild(result);
-      }
+  limit+=4;
+  for(const e of gameData["0"]){
+    if(limit==0 && e[0]!="WIN" && e[0]!="OVER")break;
+    limit--;
+    if(e[0]=="NEW_GAME"){
+      document.getElementById("domino_board").innerHTML="";
+      firstMove=true;
     }
-  })
-  .catch(error => {
-    console.error('Error reading the JSON file: ', error);
-  });
+    else if(e[0]=="MOVE"){
+      let a=e[2][0],b=e[2][1],p=e[3];
+      move(a,b,p);
+    }
+    else if(e[0]=="WIN"){
+      let result = document.createElement("h1");
+      result.className=("result_text");
+      result.innerHTML=`Player ${e[1]+1} wins!`;
+      document.getElementById("domino_board").appendChild(result);
+    }
+  }
+  document.getElementById("move_count").innerHTML=`Move #${currentMove-1}`;
+  let moveTexts=document.getElementsByClassName("move_text");
+  let i=1;
+  for(e of moveTexts){
+    if(i<=currentMove-1)e.className="move_text player_move_text";
+    else e.className="move_text";
+    i++;
+  }
 }
 
-let currentMove=1;
+function initGame(){
+  gameLen=gameData[0].length-7;
+  let c=0,i=0,row=``;
+  let gameTableBody=document.getElementById("game_table_body");
+  for(const e of gameData["0"]){
+    if(e[0]=="MOVE" || e[0]=="PASS"){
+      if(c==0)row=`<tr><th scope="row">${++i}</th>`;
+      c++;
+      if(e[0]=="MOVE"){
+        let a=e[2][0],b=e[2][1],p=e[3];
+        let pc=`▼`;
+        if(p)pc=`▲`;
+        row+=`<td class="move_text">[${a} | ${b}]${pc}</td>`;
+      }
+      else{
+        row+=`<td class="move_text">---------</td>`;
+      }
+      if(c==4){
+        gameTableBody.innerHTML+=row+`</tr>`;
+        c=0;
+      }
+    }
+    else if(e[0]=="WIN"){
+      
+    }
+  }
+  if(c!=0){
+    gameTableBody.innerHTML+=row+`</tr>`;
+  }
 
-window.onload = function(e){ 
+  let moveTexts=document.getElementsByClassName("move_text");
+  i=1;
+  for(e of moveTexts){
+    i++;
+    const a=i;
+    e.onclick = function(){
+      currentMove=a;
+      simulateGame(currentMove);
+    };
+  }
+}
+
+
+window.onload = async () =>{ 
+  gameData = await gameDataPromise;
+  initGame();
+
   let nextBtn=document.getElementById("next_move_btn");
   nextBtn.onclick = function(){
-    if(!onFinal)currentMove++;
+    if(currentMove<=gameLen)currentMove++;
     simulateGame(currentMove);
-    document.getElementById("move_count").innerHTML=`Move #${currentMove-1}`;
   };
 
   let prevBtn=document.getElementById("prev_move_btn");
   prevBtn.onclick = function(){
     currentMove--;
-    onFinal=0;
     if(currentMove==0)currentMove=1;
     simulateGame(currentMove);
-    document.getElementById("move_count").innerHTML=`Move #${currentMove-1}`;
+  };
+
+  let fullNextBtn=document.getElementById("full_next_move_btn");
+  fullNextBtn.onclick = function(){
+    currentMove=gameLen+1;
+    simulateGame(currentMove);
+  };
+
+  let fullPrevBtn=document.getElementById("full_prev_move_btn");
+  fullPrevBtn.onclick = function(){
+    currentMove=1;
+    simulateGame(currentMove);
   };
 }
+
+document.addEventListener("keypress", function(e) {
+  if (e.key=="a" || e.key=="A") {
+    currentMove--;
+    if(currentMove==0)currentMove=1;
+    simulateGame(currentMove);
+  }
+  if (e.key=="d" || e.key=="D") {
+    if(currentMove<=gameLen)currentMove++;
+    simulateGame(currentMove);
+  }
+});
