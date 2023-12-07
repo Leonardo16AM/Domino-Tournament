@@ -215,7 +215,7 @@ function move(a, b, p){
       }
     }
     else if(prev.dir==1){
-      if(prev.j>=69){
+      if(prev.j>=65){
         if(p==0){
           t=4;
           dir=2;
@@ -243,7 +243,7 @@ function move(a, b, p){
       }
     }
     else{
-      if(prev.j<=13){
+      if(prev.j<=12){
         if(p==0){
           t=5;
           dir=2;
@@ -333,9 +333,6 @@ function initGame(){
         gameTableBody.innerHTML+=row+`</tr>`;
         c=0;
       }
-    }
-    else if(e[0]=="WIN"){
-      
     }
   }
   if(c!=0){
