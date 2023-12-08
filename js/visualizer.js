@@ -189,7 +189,7 @@ function move(a, b, p){
       "d" : d,
       "o" : o,
       "i" : (boardHeight/cellSize)/2-2,
-      "j" : (boardWidth/cellSize)/2-2,
+      "j" : (boardWidth/cellSize)/2-7,
       "dir" : 3
     }
     cur[1]={
@@ -197,7 +197,7 @@ function move(a, b, p){
       "d" : d,
       "o" : o,
       "i" : (boardHeight/cellSize)/2-2,
-      "j" : (boardWidth/cellSize)/2-2,
+      "j" : (boardWidth/cellSize)/2-7,
       "dir" : 1
     }
     placeToken(o, a, b, cur[0].i, cur[0].j);
@@ -286,9 +286,11 @@ function move(a, b, p){
 }
 
 function print_hands(){
-  const ni=[0,boardHeight/2-cellSize*10,boardHeight-10,boardHeight/2-cellSize*10];
+  let temp=firstMove;
+  firstMove=0;
+  const ni=[1,boardHeight/2-cellSize*10,boardHeight-5,boardHeight/2-cellSize*10];
   // const nj=[boardWidth/2-cellSize*10,boardWidth,boardWidth/2-cellSize*10 ,8];
-  const nj=[boardWidth/2-cellSize*10,70,boardWidth/2-cellSize*10 ,8];
+  const nj=[boardWidth/2-cellSize*14,72,boardWidth/2-cellSize*14 ,8];
   for(let i=0 ; i<4;  i++){
     let ii=0,ij=i!=2?0:-1;
     for(const e of ply_hands[i]){
@@ -300,10 +302,13 @@ function print_hands(){
       }
     }
   }
+  firstMove=temp;
 }
 
 function simulateGame(limit){
   chips.clear();
+  let result = document.getElementById("result_text");
+  result.style.visibility="hidden";
 
   limit+=4;
   for(const e of gameData["0"]){
@@ -320,10 +325,7 @@ function simulateGame(limit){
       move(a,b,p);
     }
     else if(e[0]=="WIN"){
-      let result = document.createElement("h1");
-      result.className=("result_text");
-      result.innerHTML=`Player ${e[1]+1} wins!`;
-      document.getElementById("domino_board").appendChild(result);
+      result.style.visibility="visible";
     }
   }
   document.getElementById("move_count").innerHTML=`Move #${currentMove-1}`;
@@ -361,10 +363,18 @@ function initGame(){
       else{
         row+=`<td class="move_text">---------</td>`;
       }
+
       if(c==4){
         gameTableBody.innerHTML+=row+`</tr>`;
         c=0;
       }
+    }
+    else if(e[0]=="WIN"){
+      let result = document.createElement("h1");
+      result.id=("result_text");
+      result.innerHTML=`Player ${e[1]+1} wins!`;
+      result.style.visibility="hidden";
+      document.getElementById("gamelog").appendChild(result);
     }
   }
   if(c!=0){
