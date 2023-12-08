@@ -9,6 +9,9 @@ const boardHeight = 40;
 
 let cur=[];
 
+let chips=new Map();
+const ply_hands=[];
+
 let gameLen=0;
 let currentMove=1;
 
@@ -215,9 +218,9 @@ function move(a, b, p){
       }
     }
     else if(prev.dir==1){
-      if(prev.j>=65){
+      if(prev.j>=63){
         if(p==0){
-          t=4;
+          t=2;
           dir=2;
         }
         else{
@@ -243,7 +246,7 @@ function move(a, b, p){
       }
     }
     else{
-      if(prev.j<=12){
+      if(prev.j<=16){
         if(p==0){
           t=5;
           dir=2;
@@ -282,7 +285,26 @@ function move(a, b, p){
   }
 }
 
+function print_hands(){
+  const ni=[0,boardHeight/2-cellSize*10,boardHeight-10,boardHeight/2-cellSize*10];
+  // const nj=[boardWidth/2-cellSize*10,boardWidth,boardWidth/2-cellSize*10 ,8];
+  const nj=[boardWidth/2-cellSize*10,70,boardWidth/2-cellSize*10 ,8];
+  for(let i=0 ; i<4;  i++){
+    let ii=0,ij=i!=2?0:-1;
+    for(const e of ply_hands[i]){
+      let temp_chip=e[0]+''+e[1];
+      if(!chips.has(temp_chip)){
+        placeToken((!(i%2)),e[0],e[1],ni[i]+ii*2,nj[i]+ij*2);
+        ii+=((i%2));
+        ij+=(!(i%2));
+      }
+    }
+  }
+}
+
 function simulateGame(limit){
+  chips.clear();
+
   limit+=4;
   for(const e of gameData["0"]){
     if(limit==0 && e[0]!="WIN" && e[0]!="OVER")break;
@@ -293,6 +315,8 @@ function simulateGame(limit){
     }
     else if(e[0]=="MOVE"){
       let a=e[2][0],b=e[2][1],p=e[3];
+      let key=e[2].join('');
+      chips.set(key,1);
       move(a,b,p);
     }
     else if(e[0]=="WIN"){
@@ -310,9 +334,16 @@ function simulateGame(limit){
     else e.className="move_text";
     i++;
   }
+  print_hands();
 }
 
 function initGame(){
+  for(const e of gameData["0"]){      // guardar las manos  d los players en ply_hands
+    if(e[0]=="HAND"){
+      ply_hands.push(e[1]);
+    }
+  }
+
   gameLen=gameData[0].length-7;
   let c=0,i=0,row=``;
   let gameTableBody=document.getElementById("game_table_body");

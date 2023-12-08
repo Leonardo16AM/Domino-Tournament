@@ -105,7 +105,7 @@ class Domino:
         self.log(Event.NEW_GAME)
 
         for i in range(0,4):        # todo ajustar el limite superior del range a la cantidad de players en el juego
-            pieces=[i]
+            pieces=[]                       #pieces=[i]??
             for piece in self.players[i].remaining:
                 pieces.append(piece)
             self.log(Event.HAND,pieces) 
