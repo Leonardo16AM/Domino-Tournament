@@ -343,6 +343,7 @@ function initGame(){
       ply_hands.push(e[1]);
     }
   }
+  print_hands();
 
   gameLen=gameData[0].length-7;
   let c=0,i=0,row=``;
