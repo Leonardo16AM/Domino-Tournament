@@ -99,8 +99,8 @@ def main():
     repo_url =  get_repo_from_pull_request(sys.argv[2])
     p1=5000
     p2=5001
-    docker_build1 = f"docker build -t {user_name.lower()+'_a'} '{repo_url}.git'"
-    docker_build2 = f"docker build -t {user_name.lower()+'_b'} '{repo_url}.git'"
+    docker_build1 = f"docker build -t {user_name.lower()+'_a'} {repo_url}.git"
+    docker_build2 = f"docker build -t {user_name.lower()+'_b'} {repo_url}.git"
     build_out1 = subprocess.run(docker_build1, shell=True)
     build_out2 = subprocess.run(docker_build2, shell=True)
 
