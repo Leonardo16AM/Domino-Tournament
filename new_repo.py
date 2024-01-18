@@ -110,8 +110,8 @@ def main():
         start_new_player(user_name.lower()+'_b',p2,user_name.lower()+'_b')
 
         tipos=['Agachao', 'AlwaysDouble', 'DataDropper', 'DataKeeper', 'DoubleEnd',
-                'Human', 'LessPlayed', 'MonteCarlo', 'NonDouble', 'Passer', 'Remote',
-                'Repeater', 'RLPlayer', 'BigDrop', 'SmallDrop', 'Supportive',
+                'LessPlayed', 'NonDouble', 'Passer',
+                'Repeater', 'BigDrop', 'SmallDrop', 'Supportive',
                 'TableCounter']
         for tipo in tipos:
             print(f"Playing games between {user_name} and {tipo}")
