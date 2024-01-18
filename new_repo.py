@@ -58,7 +58,7 @@ def parse_output(output_str):
 def run_game(p1, p2, tipo):
     '''Corre un juego entre los dos jugadores que estan en los puertos p1 y p2 contra dos jugadores tipo'''
 
-    cmd = f"python3 src/domino/domino.py play -p0 Remote http://127.0.0.1:{p1} -p1 {tipo} -p2 Remote http://127.0.0.1:{p2} -p3 {tipo} -v"
+    cmd = f"python src/domino/domino.py play -p0 Remote http://127.0.0.1:{p1} -p1 {tipo} -p2 Remote http://127.0.0.1:{p2} -p3 {tipo} -v"
   
     completed_process = subprocess.run(cmd, shell=True, capture_output=True, text=True)
 
@@ -109,7 +109,10 @@ def main():
         start_new_player(user_name.lower()+'_a',p1,user_name.lower()+'_a')
         start_new_player(user_name.lower()+'_b',p2,user_name.lower()+'_b')
 
-        tipos=['Agachao']
+        tipos=['Agachao', 'AlwaysDouble', 'DataDropper', 'DataKeeper', 'DoubleEnd',
+                'Human', 'LessPlayed', 'MonteCarlo', 'NonDouble', 'Passer', 'Remote',
+                'Repeater', 'RLPlayer', 'BigDrop', 'SmallDrop', 'Supportive',
+                'TableCounter']
         for tipo in tipos:
             print(f"Playing games between {user_name} and {tipo}")
             result = run_game(p1,p2,tipo)
