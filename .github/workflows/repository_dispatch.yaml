@@ -1,0 +1,30 @@
+name: Update JSON and Run Games
+
+on:
+  repository_dispatch:
+    types: [pull_request_received]
+
+jobs:
+  process-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Update JSON
+        run: |
+          USER_NAME="${{ github.event.client_payload.sender.login }}"
+          REPO_URL="${{ github.event.client_payload.pull_request.html_url }}"
+          
+          jq --arg user "$USER_NAME" --arg url "$REPO_URL" '. += [{"username": $user, "repository": $url}]' src/data/player.json > temp.json && mv temp.json src/data/player.json
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name 'AutoGIA'
+          git config --global user.email 'AutoGIA@github.com'
+          git add src/data/player.json
+          git commit -m "[AUTO] Added new player to player.json"
+          git push
+
+      - name: Run Games and Update Scoreboard
+        run: python src/new_repo.py $USER_NAME
