@@ -34,6 +34,64 @@ def update_players_file(user_name, repo_url):
     print("Players.json updated")
 
 
+def update_players_file_game_ID(user_name, game_ID):
+    ''' Actualiza el archivo players.json , añade al usuario y su repo,
+      en caso de ya existir actualiza el repo'''
+
+    FILE_PATH = "src/data/players.json"
+    with open(FILE_PATH, 'r') as file:
+        players = json.load(file)
+
+    for player in players:
+        if player['github_user'] == user_name:
+            player['games_played'].append(game_ID)
+            break
+
+    with open(FILE_PATH, 'w') as file:
+        json.dump(players, file, indent=4)
+    print("Players.json updated, game ID")
+
+
+def get_new_game_ID():
+    FILE_PATH = "src/data/games.json"
+    with open(FILE_PATH, 'r') as file:
+        games = json.load(file)
+
+    max_id = -1
+    for game in games:
+        max_id = max(max_id, game['game_id'])
+    
+    return max_id + 1
+
+def save_game_info(game_ID):
+    FILE_PATH = "src/domino/logs.log"
+    with open(FILE_PATH, 'r') as file:
+        game_info = json.load(file)
+
+
+    new_game = {
+        "game_id": game_ID,
+        "players": ["user1", "user2", "user3", "user4"],
+        "winners": ["user1", "user2"],
+        "losers": {
+            "user3": 15,
+            "user4": 10
+        },
+        "game_info": game_info['0']
+    }
+
+    FILE_PATH = "src/data/games.json"
+    with open(FILE_PATH, 'r') as file:
+        games = json.load(file)
+
+    games.append(new_game)
+
+    with open(FILE_PATH, 'w') as file:
+        json.dump(games, file, indent=4)
+    print("games.json updated")
+    
+    
+
 def start_new_player(container_id,port,image_name):
     ''' Corre el contenedor de docker en un puerto dado '''
     print(f"Corriendo el contenedor {container_id}...")
@@ -104,7 +162,9 @@ def main():
     build_out1 = subprocess.run(docker_build1, shell=True)
     build_out2 = subprocess.run(docker_build2, shell=True)
 
+    
     if build_out1.returncode == 0 and build_out2.returncode == 0:
+        update_players_file(user_name, repo_url)
 
         start_new_player(user_name.lower()+'_a',p1,user_name.lower()+'_a')
         start_new_player(user_name.lower()+'_b',p2,user_name.lower()+'_b')
@@ -114,12 +174,12 @@ def main():
                 'Repeater', 'BigDrop', 'SmallDrop', 'Supportive',
                 'TableCounter']
         for tipo in tipos:
+            game_ID = get_new_game_ID()
             print(f"Playing games between {user_name} and {tipo}")
+            save_game_info(game_ID)
             result = run_game(p1,p2,tipo)
+            update_players_file_game_ID(user_name, game_ID)
             print(result)
-        
-
-    update_players_file(user_name, repo_url)
 
 if __name__ == "__main__":
     main()
