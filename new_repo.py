@@ -113,10 +113,10 @@ def parse_output(output_str):
         return None
 
 
-def run_game(p1, p2, tipo):
+def run_game(p1, p2, tipo, game_ID):
     '''Corre un juego entre los dos jugadores que estan en los puertos p1 y p2 contra dos jugadores tipo'''
 
-    cmd = f"python src/domino/domino.py play -p0 Remote http://127.0.0.1:{p1} -p1 {tipo} -p2 Remote http://127.0.0.1:{p2} -p3 {tipo} -v"
+    cmd = f"python src/domino/domino.py play -p0 Remote http://127.0.0.1:{p1} -p1 {tipo} -p2 Remote http://127.0.0.1:{p2} -p3 {tipo} -v --out games/{game_ID}.json"
   
     completed_process = subprocess.run(cmd, shell=True, capture_output=True, text=True)
 
@@ -177,7 +177,7 @@ def main():
             game_ID = get_new_game_ID()
             print(f"Playing games between {user_name} and {tipo}")
             save_game_info(game_ID)
-            result = run_game(p1,p2,tipo)
+            result = run_game(p1,p2,tipo,game_ID)
             update_players_file_game_ID(user_name, game_ID)
             print(result)
 
