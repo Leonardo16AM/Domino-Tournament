@@ -116,6 +116,9 @@ def parse_output(output_str):
 def run_game(p1, p2, tipo, game_ID):
     '''Corre un juego entre los dos jugadores que estan en los puertos p1 y p2 contra dos jugadores tipo'''
 
+    with open(f'{game_ID}.json', 'w') as f:
+        json.dump({}, f)
+    
     cmd = f"python src/domino/domino.py play -p0 Remote http://127.0.0.1:{p1} -p1 {tipo} -p2 Remote http://127.0.0.1:{p2} -p3 {tipo} -v --out games/{game_ID}.json"
   
     completed_process = subprocess.run(cmd, shell=True, capture_output=True, text=True)
