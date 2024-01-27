@@ -52,15 +52,16 @@ def update_players_file_game_ID(user_name, game_ID):
     print("Players.json updated, game ID")
 
 
-def get_new_game_ID():
-    FILE_PATH = "src/data/games.json"
-    with open(FILE_PATH, 'r') as file:
-        games = json.load(file)
-
-    max_id = -1
-    for game in games:
-        max_id = max(max_id, game['game_id'])
-    
+def get_new_game_id():
+    game_ids = []
+    for filename in os.listdir('games'):
+        if filename.endswith(".json"):
+            try:
+                game_id = int(filename.split('.')[0])
+                game_ids.append(game_id)
+            except ValueError:
+                continue
+    max_id = max(game_ids, default=-1)
     return max_id + 1
 
 def save_game_info(game_ID):
@@ -115,7 +116,7 @@ def parse_output(output_str):
 
 def run_game(p1, p2, tipo, game_ID):
     '''Corre un juego entre los dos jugadores que estan en los puertos p1 y p2 contra dos jugadores tipo'''
-
+    
     with open(f'games/{game_ID}.json', 'w') as f:
         json.dump({}, f)
 
@@ -159,6 +160,9 @@ def get_repo_from_pull_request(pull_request_url):
 
     
 def main():
+    
+    os.makedirs('games', exist_ok=True)
+
     if len(sys.argv) != 3:
         print("Use: new_repo.py <user> <url_pr>")
         sys.exit(1)
@@ -184,7 +188,7 @@ def main():
                 'Repeater', 'BigDrop', 'SmallDrop', 'Supportive',
                 'TableCounter']
         for tipo in tipos:
-            game_ID = get_new_game_ID()
+            game_ID = get_new_game_id()
             print(f"Playing games between {user_name} and {tipo}")
             save_game_info(game_ID)
             result = run_game(p1,p2,tipo,game_ID)
