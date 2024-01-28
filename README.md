@@ -1,30 +1,17 @@
-# Domino Tournament
+# Example remote domino player
 
-<p align="center">
-  <img src="https://github.com/UH-GIA02/Domino-Tournament/blob/main/images/background%20sin%20fondo.png" width="40%" height="40%">
-</p>
-Welcome to the GitHub Domino Tournament! This is a unique project where participants from the GitHub community can submit their virtual domino players and compete in an automated domino tournament. The competition leverages GitHub's infrastructure, and the results are showcased on GitHub Pages.
+This is an example player to connect to the cooperAItive remote domino player ([here](https://github.com/2kodevs/cooperAItive/blob/master/src/games/domino/module/players/strategies/remote.py))
 
-## Getting Started
+You can build the image with
 
-### Prerequisites
+```
+docker build . --tag example
+```
 
-- A GitHub account
-- Basic understanding of how to use GitHub repositories, Docker and GitHub Actions
+Then you can run it with
 
-### How to Participate
+```
+docker run --rm -p 127.0.0.1:5000:8000 example
+```
 
-1. **Fork the Repository:** Start by forking the example repository to your account.
-2. **Create Your Player:** Follow the instructions to create your virtual domino player.
-3. **Submit Your Player:** Make a pull request with your player file to the main repository.
-4. **Watch the Tournament:** Once the tournament starts, you can watch the progress and results on our GitHub Pages site.
-
-## Results
-
-After the tournament concludes, the results will be published on our GitHub Pages site. You can access it at `[[Scoreboard](https://uh-gia02.github.io/Domino-Tournament/scoreboard.html)]`.
-
-## Contributing
-
-Contributions to improve the tournament are welcome.  
-
-
+This will expose the container port `8000` to `127.0.0.1:5000`, so you can provide that url to the Remote player and try it out
