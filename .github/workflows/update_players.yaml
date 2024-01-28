@@ -26,6 +26,11 @@ jobs:
         SUPER_TOKEN: ${{ secrets.SUPER_TOKEN }}
       run: python new_repo.py ${{ github.event.client_payload.pr_user }} ${{ github.event.client_payload.pr_link }}
 
+    - name: Verificar cambios
+      run: |
+        git status
+        git diff
+
     - name: Commit y Push de Cambios
       env:
         GITHUB_TOKEN: ${{ secrets.SUPER_TOKEN }}
@@ -33,5 +38,5 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
-        git commit -m "Update games JSONs" || echo "No changes to commit"
+        git diff-index --quiet HEAD || git commit -m "Update games and players "
         git push origin main
