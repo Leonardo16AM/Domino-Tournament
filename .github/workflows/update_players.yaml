@@ -14,7 +14,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.9' 
+        python-version: '3.9'
 
     - name: Instalar requerimientos
       run: pip install PyGithub termcolor numpy
@@ -23,3 +23,11 @@ jobs:
       env:
         SUPER_TOKEN: ${{ secrets.SUPER_TOKEN }}
       run: python new_repo.py ${{ github.event.client_payload.pr_user }} ${{ github.event.client_payload.pr_link }}
+
+    - name: Commit y Push de Cambios
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "Update games by last PR"
+        git push
