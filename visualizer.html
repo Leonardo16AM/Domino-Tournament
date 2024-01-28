@@ -3,14 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>&#x1F074; Domino Tournament | Visualizer</title>
-    <style>
-        .player-entry {
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-    </style>
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 
@@ -76,118 +68,35 @@
     
     <div id="visualizer_section">
       <div id="domino_board">
-          <button class="btn-1" id="next_move_btn">Next</button>
           <script src="js/visualizer.js"></script>
+      </div>
+      <div id="gamelog">
+        <div>
+          <table class="table table-striped table-dark table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">1</th>
+                    <th scope="col">2</th>
+                    <th scope="col">3</th>
+                    <th scope="col">4</th>
+                </tr>
+            </thead>
+            <tbody id="game_table_body">
+            </tbody>
+          </table>
+        </div>
+        <div id="game_controlers">
+          <button class="btn-1" id="full_prev_move_btn"><<</button>
+          <button class="btn-1" id="prev_move_btn"><</button>
+          <p id="move_count">Move #0</p>
+          <button class="btn-1" id="next_move_btn">></button>
+          <button class="btn-1" id="full_next_move_btn">>></button>
+        </div>
       </div>
     </div>
 
     <!-- end of visualizer section -->
-     
-  <!-- info section -->
-
-  <section class="info_section ">
-    <div class="info_container layout_padding-top">
-      <div class="container">
-        <div class="info_top">
-          <div class="info_logo">
-            <img src="images/logo.png" alt="" />
-            <span>
-              VPDT&#x1F074;
-            </span>
-          </div>
-          <div class="social_box">
-            <a href="https://github.com/UH-GIA02">
-              <i class="fa fa-github" style="font-size:48px;color:white"></i>
-            </a>
-          </div>
-        </div>
-
-        <div class="info_main">
-          <div class="row">
-            <div class="col-md-3 col-lg-2">
-              <div class="info_link-box">
-                <h5>
-                  Enlaces útiles
-                </h5>
-                <ul>
-                  <li class=" active">
-                    <a class="" href="index.html">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="">
-                    <a class="" href="about.html">About </a>
-                  </li>
-                  <li class="">
-                    <a class="" href="category.html">Leaderboard </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="col-md-3  offset-lg-3">
-              <div class="info_form ">
-                <h5>
-                  Contáctanos
-                </h5>
-                <form action="">
-                  <input type="email" placeholder="Email">
-                  <button>
-                    Enviar
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-9 col-md-10 mx-auto">
-            <div class="info_contact layout_padding2">
-              <div class="row">
-                <div class="col-md-3">
-                  <a href="#" class="link-box">
-                    <div class="img-box">
-                      <img src="images/location.png" alt="">
-                    </div>
-                    <div class="detail-box">
-                      <h6>
-                        Universidad de la Habana, Cuba
-                      </h6>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-md-4">
-                  <a href="#" class="link-box">
-                    <div class="img-box">
-                      <img src="images/mail.png" alt="">
-                    </div>
-                    <div class="detail-box">
-                      <h6>
-                        gia02@gmail.com
-                      </h6>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-md-5">
-                  <a href="#" class="link-box">
-                    <div class="img-box">
-                      <img src="images/call.png" alt="">
-                    </div>
-                    <div class="detail-box">
-                      <h6>
-                        Call +53 5 551 2893
-                      </h6>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- end info section -->
 
   <!-- footer section -->
   <footer class="container-fluid footer_section ">

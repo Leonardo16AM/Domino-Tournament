@@ -141,6 +141,10 @@
   .category_section .category_container .box {
     flex-basis: 52%;
   }
+  
+  #leaderboard_section tr{
+    font-size: 13px;
+  }
 }
 
 @media (max-width: 480px) {}
@@ -184,6 +188,10 @@
 
   .freelance_section .tab_container .t-link-box .detail-box h3 {
     font-size: 22px;
+  }
+
+  #leaderboard_section tr{
+    font-size: 10px;
   }
 }
 

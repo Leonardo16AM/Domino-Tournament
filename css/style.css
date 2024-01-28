@@ -7,6 +7,7 @@
   --gold: rgb(251,163,1);
   --red:#ff001e;
   --darkGray:#1a2e35;
+  --darkGrey:#1a2e35;
 
   /*CF*/
   --accepted:rgb(0,170,25);
@@ -840,11 +841,11 @@ a:focus {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-color: #fdfeff;
+  background: var(--darkBlueGradient);
 }
 
 .footer_section p {
-  color: #171717;
+  color: #fff;
   margin: 0;
   padding: 25px 0 20px 0;
   margin: 0 auto;
@@ -877,6 +878,7 @@ a:focus {
 }
 
 .custom_menu-btn button {
+  display: none;
   margin-top: 12px;
   outline: none;
   border: none;
@@ -924,6 +926,21 @@ a:focus {
   color: var(--white);
   margin-top: 70px;
   padding: 5%;
+  height: calc(100vh - 139px);
+  overflow-y: scroll;
+}
+
+#leaderboard_section td, th, tr{
+  padding: 0;
+}
+
+#leaderboard_section tr{
+  line-height: 16px;
+  font-size: 16px;
+}
+
+#leaderboard_section th{
+  line-height: 20px;
 }
 
 #leaderboard_section h1{
@@ -945,11 +962,11 @@ a:focus {
 }
 
 #scoreboard a{
-  color: #4f9af0;
+  color: #3da1ff;
 }
 
 #scoreboard a:hover{
-  color: #555fec;
+  color: #9aceff;
 }
 
 .cell_won{
@@ -957,7 +974,7 @@ a:focus {
   font-weight: bold;
 }
 .cell_lost{
-  color: var(--wa);
+  color: var(--red);
   font-weight: bold;
 }
 
@@ -966,17 +983,37 @@ a:focus {
   background: var(--darkBlueGradient);
   height: calc(100vh - 70px);
   margin-top: 70px;
+  display: flex;
 }
 
 #domino_board{
   position: relative;
-  width: 100%;
+  width: 80%;
   height: 100%;
 }
 
 .domino_token{
   position: absolute;
+  transition: all 0.2s ease;
   /*box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 1px 1px;*/
+}
+
+.domino_token:hover{
+  z-index: 3;
+  transform: scale(1.1) translate(-2px,-2px);
+  filter: brightness(0.9) drop-shadow(black 3px 3px 1px) sepia(50%);
+  transition: all 0.2s ease;
+}
+
+.first_move{
+  filter: brightness(0.6) sepia(100%) hue-rotate(170deg);
+}
+
+.first_move:hover{
+  z-index: 3;
+  transform: scale(1.1) translate(-2px,-2px);
+  filter: brightness(0.5) sepia(100%) hue-rotate(170deg) drop-shadow(black 3px 3px 1px);
+  transition: 0.2s;
 }
 
 .domino_slice{
@@ -986,28 +1023,13 @@ a:focus {
   background-size: cover;
 }
 
-.result_text{
-  color: var(--gold);
+#result_text{
+  color: var(--blue);
   font-weight: bold;
-  text-align: center;
-}
-
-#domino_board .btn-1 {
-  display: inline-block;
-  padding: 5px 10px;
-  background-color: transparent;
-  color: #ffffff;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  border: 1px solid white;
-  border-radius: 4px;
-  margin: 5px;
-}
-
-#domino_board .btn-1:hover {
-  background-color: transparent;
-  border-color: var(--accepted);
-  color: var(--accepted);
+  text-align: center; 
+  margin-top: 30px;
+  z-index: 100;
+  width: 100%;
 }
 
 .info_section .btn-1 {
@@ -1026,4 +1048,81 @@ a:focus {
   background-color: transparent;
   border-color: var(--red);
   color: var(--red);
+}
+
+.player-entry {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.winner {
+    color: green;
+}
+.loser {
+    color: red;
+}
+
+#gamelog{
+  width: 27%;
+  height: 100%;
+  color: white;
+  background: #02020267;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9vw;
+  overflow-y: scroll;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#game_table_body td, th{
+  line-height: 5px;
+  position: relative;
+  margin: auto;
+}
+
+#game_controlers{
+  display: flex;
+}
+
+#gamelog p{
+  margin: auto;
+  margin-top: 7px;
+}
+
+#gamelog .btn-1 {
+  margin: auto;
+  display: inline-block;
+  padding: 2px 7px;
+  background-color: transparent;
+  color: #ffffff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 1px solid white;
+  border-radius: 4px;
+  margin: 5px;
+  height: fit-content;
+}
+
+#gamelog .btn-1:hover {
+  background-color: transparent;
+  border-color: var(--accepted);
+  color: var(--accepted);
+}
+
+.move_text{
+  cursor: pointer;
+}
+
+.move_text:hover{
+  background: rgb(40,40,40);
+}
+
+.player_move_text{
+  background: rgb(15,15,15);
+}
+
+.player_move_text:hover{
+  background: rgb(40,40,40);
 }
