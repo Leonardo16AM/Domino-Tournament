@@ -6,5 +6,13 @@
         "games_tied": 1,
         "games_lost": 1,
         "rating": 3000
+    },
+    {
+        "github_user": "Leonardo16AM",
+        "games_played": 13,
+        "games_won": 0,
+        "games_tied": 5,
+        "games_lost": 8,
+        "rating": 125
     }
 ]
