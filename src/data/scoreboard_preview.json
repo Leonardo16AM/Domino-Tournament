@@ -1,5 +1,13 @@
 [
     {
+        "github_user": "EdianBC",
+        "games_played": 13,
+        "games_won": 0,
+        "games_tied": 8,
+        "games_lost": 5,
+        "rating": 200
+    },
+    {
         "github_user": "Leonardo16AM",
         "games_played": 13,
         "games_won": 0,
