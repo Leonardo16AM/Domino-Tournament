@@ -1090,5 +1090,187 @@
             "0": 0,
             "1": 1
         }
+    },
+    {
+        "game_id": 78,
+        "players": [
+            "Leonardo16AM",
+            "Agachao",
+            "Leonardo16AM",
+            "Agachao"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 79,
+        "players": [
+            "Leonardo16AM",
+            "AlwaysDouble",
+            "Leonardo16AM",
+            "AlwaysDouble"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 80,
+        "players": [
+            "Leonardo16AM",
+            "DataDropper",
+            "Leonardo16AM",
+            "DataDropper"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 81,
+        "players": [
+            "Leonardo16AM",
+            "DataKeeper",
+            "Leonardo16AM",
+            "DataKeeper"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 82,
+        "players": [
+            "Leonardo16AM",
+            "DoubleEnd",
+            "Leonardo16AM",
+            "DoubleEnd"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 83,
+        "players": [
+            "Leonardo16AM",
+            "LessPlayed",
+            "Leonardo16AM",
+            "LessPlayed"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 84,
+        "players": [
+            "Leonardo16AM",
+            "NonDouble",
+            "Leonardo16AM",
+            "NonDouble"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 85,
+        "players": [
+            "Leonardo16AM",
+            "Passer",
+            "Leonardo16AM",
+            "Passer"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 86,
+        "players": [
+            "Leonardo16AM",
+            "Repeater",
+            "Leonardo16AM",
+            "Repeater"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 87,
+        "players": [
+            "Leonardo16AM",
+            "BigDrop",
+            "Leonardo16AM",
+            "BigDrop"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 88,
+        "players": [
+            "Leonardo16AM",
+            "SmallDrop",
+            "Leonardo16AM",
+            "SmallDrop"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 89,
+        "players": [
+            "Leonardo16AM",
+            "Supportive",
+            "Leonardo16AM",
+            "Supportive"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 90,
+        "players": [
+            "Leonardo16AM",
+            "TableCounter",
+            "Leonardo16AM",
+            "TableCounter"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
     }
 ]
