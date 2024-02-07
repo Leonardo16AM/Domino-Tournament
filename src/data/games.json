@@ -1,19 +1,366 @@
 [
     {
+        "game_id": 0,
+        "players": [
+            "Leonardo16AM",
+            "Agachao",
+            "Leonardo16AM",
+            "Agachao"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
         "game_id": 1,
         "players": [
-            "user1",
-            "user2",
-            "user3",
-            "user4"
+            "Leonardo16AM",
+            "AlwaysDouble",
+            "Leonardo16AM",
+            "AlwaysDouble"
         ],
-        "winners": [
-            "user1",
-            "user2"
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 2,
+        "players": [
+            "Leonardo16AM",
+            "DataDropper",
+            "Leonardo16AM",
+            "DataDropper"
         ],
-        "losers": {
-            "user3": 15,
-            "user4": 10
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 3,
+        "players": [
+            "Leonardo16AM",
+            "DataKeeper",
+            "Leonardo16AM",
+            "DataKeeper"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 4,
+        "players": [
+            "Leonardo16AM",
+            "DoubleEnd",
+            "Leonardo16AM",
+            "DoubleEnd"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 5,
+        "players": [
+            "Leonardo16AM",
+            "LessPlayed",
+            "Leonardo16AM",
+            "LessPlayed"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 6,
+        "players": [
+            "Leonardo16AM",
+            "NonDouble",
+            "Leonardo16AM",
+            "NonDouble"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 7,
+        "players": [
+            "Leonardo16AM",
+            "Passer",
+            "Leonardo16AM",
+            "Passer"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 8,
+        "players": [
+            "Leonardo16AM",
+            "Repeater",
+            "Leonardo16AM",
+            "Repeater"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 9,
+        "players": [
+            "Leonardo16AM",
+            "BigDrop",
+            "Leonardo16AM",
+            "BigDrop"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 10,
+        "players": [
+            "Leonardo16AM",
+            "SmallDrop",
+            "Leonardo16AM",
+            "SmallDrop"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 11,
+        "players": [
+            "Leonardo16AM",
+            "Supportive",
+            "Leonardo16AM",
+            "Supportive"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 12,
+        "players": [
+            "Leonardo16AM",
+            "TableCounter",
+            "Leonardo16AM",
+            "TableCounter"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 13,
+        "players": [
+            "EdianBC",
+            "Agachao",
+            "EdianBC",
+            "Agachao"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 14,
+        "players": [
+            "EdianBC",
+            "AlwaysDouble",
+            "EdianBC",
+            "AlwaysDouble"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 15,
+        "players": [
+            "EdianBC",
+            "DataDropper",
+            "EdianBC",
+            "DataDropper"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 16,
+        "players": [
+            "EdianBC",
+            "DataKeeper",
+            "EdianBC",
+            "DataKeeper"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 17,
+        "players": [
+            "EdianBC",
+            "DoubleEnd",
+            "EdianBC",
+            "DoubleEnd"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 18,
+        "players": [
+            "EdianBC",
+            "LessPlayed",
+            "EdianBC",
+            "LessPlayed"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 19,
+        "players": [
+            "EdianBC",
+            "NonDouble",
+            "EdianBC",
+            "NonDouble"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 20,
+        "players": [
+            "EdianBC",
+            "Passer",
+            "EdianBC",
+            "Passer"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 21,
+        "players": [
+            "EdianBC",
+            "Repeater",
+            "EdianBC",
+            "Repeater"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 22,
+        "players": [
+            "EdianBC",
+            "BigDrop",
+            "EdianBC",
+            "BigDrop"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 23,
+        "players": [
+            "EdianBC",
+            "SmallDrop",
+            "EdianBC",
+            "SmallDrop"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 24,
+        "players": [
+            "EdianBC",
+            "Supportive",
+            "EdianBC",
+            "Supportive"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 25,
+        "players": [
+            "EdianBC",
+            "TableCounter",
+            "EdianBC",
+            "TableCounter"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
         }
     }
 ]
