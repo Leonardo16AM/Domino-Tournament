@@ -64,21 +64,11 @@ def get_new_game_id():
     max_id = max(game_ids, default=-1)
     return max_id + 1
 
-def save_game_info(game_ID):
-    FILE_PATH = "src/domino/logs.log"
-    with open(FILE_PATH, 'r') as file:
-        game_info = json.load(file)
-
-
+def save_game_info(game_ID,user1,user2,user3,user4,result):
     new_game = {
         "game_id": game_ID,
-        "players": ["user1", "user2", "user3", "user4"],
-        "winners": ["user1", "user2"],
-        "losers": {
-            "user3": 15,
-            "user4": 10
-        },
-        "game_info": game_info['0']
+        "players": [user1, user2, user3, user4],
+        "result":  result
     }
 
     FILE_PATH = "src/data/games.json"
@@ -190,8 +180,8 @@ def main():
         for tipo in tipos:
             game_ID = get_new_game_id()
             print(f"Playing games between {user_name} and {tipo}")
-            save_game_info(game_ID)
             result = run_game(p1,p2,tipo,game_ID)
+            save_game_info(game_ID,user_name,tipo,user_name,tipo,result)
             update_players_file_game_ID(user_name, game_ID)
             print(result)
 
