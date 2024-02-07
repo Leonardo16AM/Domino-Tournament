@@ -191,9 +191,9 @@ def main():
             update_players_file_game_ID(user_name, game_ID)
             print(result)
             result=dict(result)
-            games_won += result['-1']
-            games_tied += result['0']
-            games_lost += result['1']
+            games_won += result[-1]
+            games_tied += result[0]
+            games_lost += result[1]
 
             print(result) 
 
