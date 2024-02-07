@@ -362,5 +362,187 @@
             "0": 1,
             "1": 0
         }
+    },
+    {
+        "game_id": 26,
+        "players": [
+            "EdianBC",
+            "Agachao",
+            "EdianBC",
+            "Agachao"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 27,
+        "players": [
+            "EdianBC",
+            "AlwaysDouble",
+            "EdianBC",
+            "AlwaysDouble"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 28,
+        "players": [
+            "EdianBC",
+            "DataDropper",
+            "EdianBC",
+            "DataDropper"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 29,
+        "players": [
+            "EdianBC",
+            "DataKeeper",
+            "EdianBC",
+            "DataKeeper"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 30,
+        "players": [
+            "EdianBC",
+            "DoubleEnd",
+            "EdianBC",
+            "DoubleEnd"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 31,
+        "players": [
+            "EdianBC",
+            "LessPlayed",
+            "EdianBC",
+            "LessPlayed"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 32,
+        "players": [
+            "EdianBC",
+            "NonDouble",
+            "EdianBC",
+            "NonDouble"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 33,
+        "players": [
+            "EdianBC",
+            "Passer",
+            "EdianBC",
+            "Passer"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 34,
+        "players": [
+            "EdianBC",
+            "Repeater",
+            "EdianBC",
+            "Repeater"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 0,
+            "1": 1
+        }
+    },
+    {
+        "game_id": 35,
+        "players": [
+            "EdianBC",
+            "BigDrop",
+            "EdianBC",
+            "BigDrop"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 36,
+        "players": [
+            "EdianBC",
+            "SmallDrop",
+            "EdianBC",
+            "SmallDrop"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 37,
+        "players": [
+            "EdianBC",
+            "Supportive",
+            "EdianBC",
+            "Supportive"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
+    },
+    {
+        "game_id": 38,
+        "players": [
+            "EdianBC",
+            "TableCounter",
+            "EdianBC",
+            "TableCounter"
+        ],
+        "result": {
+            "-1": 0,
+            "0": 1,
+            "1": 0
+        }
     }
 ]
