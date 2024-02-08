@@ -1,13 +1,5 @@
 [
     {
-        "github_user": "user1",
-        "games_played": 5,
-        "games_won": 4,
-        "games_tied": 1,
-        "games_lost": 1,
-        "rating": 3000
-    },
-    {
         "github_user": "Leonardo16AM",
         "games_played": 13,
         "games_won": 0,
