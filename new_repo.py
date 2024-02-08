@@ -8,8 +8,39 @@ from collections import defaultdict
 import ast
 import requests
 
-
-#ef update_rating()
+def update_rating(user_name, games_played, games_tied, games_lost, rating):
+    file_path = 'src/data/scoreboard_preview.json'
+    
+    try:
+        with open(file_path, 'r') as file:
+            data = json.load(file)
+    except FileNotFoundError:
+        data = []
+    
+    user_found = False
+    for user in data:
+        if user['github_user'] == user_name:
+            user['games_played'] = games_played
+            user['games_tied'] = games_tied
+            user['games_lost'] = games_lost
+            user['rating'] = rating
+            user_found = True
+            break
+    
+    if not user_found:
+        data.append({
+            'github_user': user_name,
+            'games_played': games_played,
+            'games_won': games_played - games_lost - games_tied,
+            'games_tied': games_tied,
+            'games_lost': games_lost,
+            'rating': rating
+        })
+    
+    data.sort(key=lambda x: x['rating'], reverse=True)
+    
+    with open(file_path, 'w') as file:
+        json.dump(data, file, indent=4)
 
 def update_players_file(user_name, repo_url):
     ''' Actualiza el archivo players.json , añade al usuario y su repo,
