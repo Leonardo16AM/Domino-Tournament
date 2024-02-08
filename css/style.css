@@ -1126,3 +1126,12 @@ a:focus {
 .player_move_text:hover{
   background: rgb(40,40,40);
 }
+
+#info_section{
+  background: var(--darkBlueGradient);
+  color: var(--white);
+  margin-top: 70px;
+  padding: 5%;
+  height: calc(100vh - 139px);
+  overflow-y: scroll;
+}

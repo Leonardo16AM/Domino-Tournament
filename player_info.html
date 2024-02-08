@@ -1,21 +1,96 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
+<head>    <meta charset="UTF-8">
     <title>&#x1F074; Domino Tournament | Player Info</title>
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="css/responsive.css" rel="stylesheet" />
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <h1>Información del Jugador</h1>
-    <div id="player-info">
+    <header class="header_section">
+        <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+            <a class="navbar-brand" href="index.html">
+            <img src="images/logo.png" alt="" />
+            <span>
+                VPDT&#x1F074;
+            </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  ">
+                <li class="nav-item">
+                <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                <a class="nav-link" href="about.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="scoreboard.html">Leaderboard</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="visualizer.html">Visualizer</a>
+                </li>
+            </ul>
+            </div>
+            <div>
+            <div class="custom_menu-btn ">
+                <button>
+                <span class=" s-1">
+
+                </span>
+                <span class="s-2">
+
+                </span>
+                <span class="s-3">
+
+                </span>
+                </button>
+            </div>
+            </div>
+
+        </nav>
+        </div>
+    </header>
+
+    <div id="info_section">
+        <h3>Player X</h3>
+        <br>
+        <p>Rating: ...</p>
     </div>
 
+
+    <!-- footer section -->
+    <footer class="container-fluid footer_section ">
+        <div class="container">
+        <p>
+            &copy; <span id="displayDate"></span> All Rights Reserved
+        </p>
+        </div>
+    </footer>
+    <!-- end  footer section -->
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/custom.js"></script>
+    
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const playerUsername = urlParams.get('player');
 
         document.addEventListener('DOMContentLoaded', function() {
-            const playersUrl = 'https://raw.githubusercontent.com/Leonardo16AM/Domino-Tournment/main/src/data/players.json';
-            const gamesUrl = 'https://raw.githubusercontent.com/Leonardo16AM/Domino-Tournment/main/src/data/games.json';
+            const playersUrl = 'https://raw.githubusercontent.com/uh-gia02/Domino-Tournament/main/src/data/players.json';
+            const gamesUrl = 'https://raw.githubusercontent.com/uh-gia02/Domino-Tournament/main/src/data/games.json';
 
             Promise.all([
                 fetch(playersUrl).then(response => response.json()),
@@ -30,27 +105,36 @@
         });
 
         function displayPlayerInfo(playersData, gamesData, playerUsername) {
-            const playerInfoElement = document.getElementById('player-info');
+            const playerInfoElement = document.getElementById('info_section');
             const player = playersData.find(p => p.github_user === playerUsername);
-            const ol = document.createElement('ol');
-
+            //const ol = document.createElement('ol');
+            
+            var won=0,tied=0,lost=0;
             if (player && player.games_played) {
                 player.games_played.forEach(gameId => {
                     const game = gamesData.find(g => g.game_id === gameId);
                     if (game) {
+                        if(game.result[-1]==1)won++;
+                        if(game.result[0]==1)tied++;
+                        if(game.result[1]==1)lost++;
+                        /*
                         const li = document.createElement('li');
                         li.innerHTML = `
                             Juego ID: ${game.game_id} <br>
                             Jugó con: ${game.players.map(player => `<span class="${game.winners.includes(player) ? 'winner' : 'loser'}">${player}</span>`).join(', ')}
                         `;
-                        ol.appendChild(li);
+                        ol.appendChild(li);*/
                     }
                 });
-                playerInfoElement.appendChild(ol);
+                //playerInfoElement.appendChild(ol);
             } else {
                 playerInfoElement.innerHTML = `<p>No se encontró información del jugador o no ha jugado partidas aún.</p>`;
             }
+            playerInfoElement.innerHTML+=`<p>Partidas ganadas: ${won}</p>
+        <p>Partidas empatadas: ${tied}</p>
+        <p>Partidas perdidas: ${lost}</p>`
         }
     </script>
+    
 </body>
 </html>
