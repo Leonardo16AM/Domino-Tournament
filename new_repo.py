@@ -230,7 +230,7 @@ def main():
 
         rating = games_won*100 + games_tied*25 + games_lost*0
 
-        #update_rating(user_name, games_played, games_tied, games_lost, rating)
+        update_rating(user_name, games_played, games_tied, games_lost, rating)
 
 if __name__ == "__main__":
     main()
