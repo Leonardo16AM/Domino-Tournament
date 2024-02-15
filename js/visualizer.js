@@ -15,7 +15,12 @@ const ply_hands=[];
 let gameLen=0;
 let currentMove=1;
 
-const gameDataPromise = fetch("./game.json").then(r=>r.json()).then(data => {
+// Get the URL parameters
+var urlParams = new URLSearchParams(window.location.search);
+// Get the match ID from the URL parameters
+var matchId = urlParams.get('matchId');
+
+const gameDataPromise = fetch(`./games/${matchId}.json`).then(r=>r.json()).then(data => {
   return data;
 });
 
