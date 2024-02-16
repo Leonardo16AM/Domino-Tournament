@@ -39,7 +39,7 @@
                 <a class="nav-link" href="scoreboard.html">Leaderboard</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="visualizer.html">Visualizer</a>
+                <a class="nav-link" href="matches.html">Matches</a>
                 </li>
             </ul>
             </div>
@@ -64,7 +64,7 @@
     </header>
 
     <div id="info_section">
-        <h3>Player X</h3>
+        <h3 id="poto">Player X</h3>
         <br>
         <p>Rating: ...</p>
     </div>
@@ -133,6 +133,8 @@
             playerInfoElement.innerHTML+=`<p>Partidas ganadas: ${won}</p>
         <p>Partidas empatadas: ${tied}</p>
         <p>Partidas perdidas: ${lost}</p>`
+        const poto=document.getElementById('poto');
+        poto.innerHTML=player.github_user;
         }
     </script>
     

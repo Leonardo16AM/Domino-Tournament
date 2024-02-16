@@ -40,8 +40,8 @@
                   <a class="nav-link" href="scoreboard.html">Leaderboard</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="visualizer.html">Visualizer</a>
-                </li>
+                    <a class="nav-link" href="matches.html">Matches</a>
+                  </li>
               </ul>
             </div>
             <div>
@@ -93,7 +93,7 @@
             const scoreboardElement = document.getElementById('scoreboard');
             matchesData.sort((a, b) => b.rating - a.rating);
             s=`
-            <table class="table table-striped table-dark table-hover">
+            <table class="table table-striped table-dark table-hover matches-table">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Id</th>
@@ -111,10 +111,10 @@
                 s+=`
                 <tr>
                     <th scope="row">${match.game_id}</th>
-                    <th scope="row">${match.players[0]}</th>
-                    <th scope="row">${match.players[1]}</th>
-                    <th scope="row">${match.players[2]}</th>
-                    <th scope="row">${match.players[3]}</th>
+                    <td scope="row">${match.players[0]}</td>
+                    <td scope="row">${match.players[1]}</td>
+                    <td scope="row">${match.players[2]}</td>
+                    <td scope="row">${match.players[3]}</td>
                     <td><a href="visualizer.html?matchId=${match.game_id}">Link</a></td>
 
                    
